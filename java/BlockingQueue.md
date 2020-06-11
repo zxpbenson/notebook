@@ -9,7 +9,7 @@
 	E poll(long timeout, TimeUnit unit) throws InterruptedException;
 
 
-[../image/1.jpg]
+![Image text](https://github.com/zxpbenson/notebook/blob/master/image/1.jpg)
 
 ### boolean add(E e);
 
