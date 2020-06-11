@@ -9,7 +9,7 @@
 	E poll(long timeout, TimeUnit unit) throws InterruptedException;
 
 
-[http://../image/1.jpg]
+[../image/1.jpg]
 
 ### boolean add(E e);
 
