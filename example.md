@@ -45,7 +45,7 @@ public class Person {
 ```java
 public class Person {
     private String name;
-    privat int age;
+    private int age;
     public void setName(String name) {
         this.name = name;
     }
@@ -55,6 +55,11 @@ public class Person {
 ## 1.3【概念1.3】
 
 <table>
+<tr>
+<th>h-1</th>
+<th>h-2</th>
+<th>h-3</th>
+</tr>
 <tr>
 <td>1-1</td>
 <td>1-2</td>
