@@ -40,6 +40,18 @@ public class Person {
 }
 </pre>
 
+## 1.2.1【概念1.2.1】
+
+```java
+public class Person {
+    private String name;
+    privat int age;
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+```
+
 ## 1.3【概念1.3】
 
 <table>
