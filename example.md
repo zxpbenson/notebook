@@ -92,6 +92,9 @@ public class Person {
 ## 1.5【概念1.6】
 
 ![Image text](https://github.com/zxpbenson/notebook/blob/master/image/1.jpg)<br/>
+
+or
+
 <img src="https://github.com/zxpbenson/notebook/blob/master/image/1.jpg"/>
 
 # 2【概念2】
