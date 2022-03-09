@@ -20,8 +20,10 @@
 【链接示例1】
 
 <p><a href="https://github.com/zxpbenson/notebook/blob/master/java/BlockingQueue.md">链接 : BlockingQueue</a></p>
+
 - - -
 【代码示例1】
+
 <pre>public class Person {
     private String name;
     privat int age;
@@ -29,8 +31,10 @@
         this.name = name;
     }
 }</pre>
+
 - - -
 【代码示例2】
+
 ```java
 public class Person {
     private String name;
