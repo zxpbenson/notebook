@@ -16,10 +16,20 @@
 ##### 1.1.1.1.1 五级标题
 ###### 1.1.1.1.1.1 六级标题
 ####### 1.1.1.1.1.1.1 七级标题不支持
+
 - - -
-【链接示例1】
+【文字链接示例】
 
 <p><a href="https://github.com/zxpbenson/notebook/blob/master/java/BlockingQueue.md">链接 : BlockingQueue</a></p>
+
+- - -
+【图片链接示例】
+
+![Image text](https://github.com/zxpbenson/notebook/blob/master/image/1.jpg)<br/>
+
+or
+
+<img src="https://github.com/zxpbenson/notebook/blob/master/image/1.jpg"/>
 
 - - -
 【代码示例1】
@@ -76,3 +86,21 @@ public class Person {
 |:-----|----:|:----:|
 |单元格|单元格|单元格|
 |单元格|单元格|单元格|
+
+- - -
+【文本段落示例】
+
+<p>段落1 第一行
+ 第二行</p>
+<p>段落2 第一行
+ 第二行</p><p>段落3</p>
+<p>段落4</p>
+
+- - -
+【文本 加粗/斜体/强调 示例】
+
+*斜体* or _强调_<br/>
+**加粗** or __加粗__<br/>
+***粗斜体*** or ___粗斜体___<br/>
+
+
