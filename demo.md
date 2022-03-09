@@ -23,11 +23,12 @@
 <p><a href="https://github.com/zxpbenson/notebook/blob/master/java/BlockingQueue.md">链接 : BlockingQueue</a></p>
 
 - - -
-【图片链接示例】
+【图片链接示例1】
 
 ![Image text](https://github.com/zxpbenson/notebook/blob/master/image/1.jpg)<br/>
 
-or
+- - -
+【图片链接示例2】
 
 <img src="https://github.com/zxpbenson/notebook/blob/master/image/1.jpg"/>
 
