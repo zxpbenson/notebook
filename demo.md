@@ -50,7 +50,7 @@ public class Person {
 <table>
 <caption>我是表格标题</caption>
 <tr>
-<th v>h-1</th>
+<th>h-1</th>
 <th>h-2</th>
 <th>h-3</th>
 </tr>
