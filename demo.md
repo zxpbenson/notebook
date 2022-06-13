@@ -68,13 +68,15 @@
 
 【代码示例2】
 
-<pre>public class Person {
+<pre>
+public class Person {
     private String name;
     privat int age;
     public void setName(String name) {
         this.name = name;
     }
-}</pre>
+}
+</pre>
 
 - - -
 
