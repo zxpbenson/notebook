@@ -939,6 +939,8 @@
 
 ### 12.2 简单工厂模式的引进
 
+<kbd>Fruit.java</kbd>
+
 ```java
 package com.benson.note.pij.construct.simplefactory;
 
@@ -957,6 +959,8 @@ public interface Fruit {
     void harvest();
 }
 ```
+<kbd>Apple.java</kbd>
+
 ```java
 package com.benson.note.pij.construct.simplefactory;
 
@@ -993,6 +997,9 @@ public class Apple implements Fruit {
     }
 }
 ```
+
+<kbd>Grape.java</kbd>
+
 ```java
 package com.benson.note.pij.construct.simplefactory;
 
@@ -1029,6 +1036,9 @@ public class Grape implements Fruit {
     }
 }
 ```
+
+<kbd>Strawberry.java</kbd>
+
 ```java
 package com.benson.note.pij.construct.simplefactory;
 
@@ -1055,6 +1065,9 @@ public class Strawberry implements Fruit {
     }
 }
 ```
+
+<kbd>BadFruitException.java</kbd>
+
 ```java
 package com.benson.note.pij.construct.simplefactory;
 
@@ -1064,6 +1077,9 @@ public class BadFruitException extends Exception {
     }
 }
 ```
+
+<kbd>FruitGardener.java</kbd>
+
 ```java
 package com.benson.note.pij.construct.simplefactory;
 
@@ -1081,6 +1097,9 @@ public class FruitGardener {
     }
 }
 ```
+
+<kbd>FruitGardenerTest.java</kbd>
+
 ```java
 package com.benson.note.pij.construct.simplefactory;
 
