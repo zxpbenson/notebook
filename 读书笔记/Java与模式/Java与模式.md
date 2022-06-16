@@ -939,7 +939,176 @@
 
 ### 12.2 简单工厂模式的引进
 
+```java
+package com.benson.note.pij.construct.simplefactory;
 
+public interface Fruit {
+    /*
+     * 种植
+     * */
+    void plant();
+    /*
+    * 生长
+    * */
+    void grow();
+    /*
+     * 收货
+     * */
+    void harvest();
+}
+```
+```java
+package com.benson.note.pij.construct.simplefactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class Apple implements Fruit {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Apple.class);
+
+    private int treeAge;
+
+    @Override
+    public void plant() {
+        LOG.info("Apple has benn planted.");
+    }
+
+    @Override
+    public void grow() {
+        LOG.info("Apple is growing...");
+    }
+
+    @Override
+    public void harvest() {
+        LOG.info("Apple has benn harvested.");
+    }
+
+    public int getTreeAge() {
+        return treeAge;
+    }
+
+    public void setTreeAge(int treeAge) {
+        this.treeAge = treeAge;
+    }
+}
+```
+```java
+package com.benson.note.pij.construct.simplefactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class Grape implements Fruit {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Grape.class);
+
+    private boolean seedless;
+
+    @Override
+    public void plant() {
+        LOG.info("Grape has benn planted.");
+    }
+
+    @Override
+    public void grow() {
+        LOG.info("Grape is growing...");
+    }
+
+    @Override
+    public void harvest() {
+        LOG.info("Grape has benn harvested.");
+    }
+
+    public boolean isSeedless() {
+        return seedless;
+    }
+
+    public void setSeedless(boolean seedless) {
+        this.seedless = seedless;
+    }
+}
+```
+```java
+package com.benson.note.pij.construct.simplefactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class Strawberry implements Fruit {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Strawberry.class);
+
+    @Override
+    public void plant() {
+        LOG.info("Grape has benn planted.");
+    }
+
+    @Override
+    public void grow() {
+        LOG.info("Grape is growing...");
+    }
+
+    @Override
+    public void harvest() {
+        LOG.info("Grape has benn harvested.");
+    }
+}
+```
+```java
+package com.benson.note.pij.construct.simplefactory;
+
+public class BadFruitException extends Exception {
+    public BadFruitException(String message) {
+        super(message);
+    }
+}
+```
+```java
+package com.benson.note.pij.construct.simplefactory;
+
+public class FruitGardener {
+    public static Fruit factory(String which) throws BadFruitException {
+        if ("apple".equalsIgnoreCase(which)) {
+            return new Apple();
+        } else if ("grape".equalsIgnoreCase(which)) {
+            return new Grape();
+        } else if ("strawberry".equalsIgnoreCase(which)) {
+            return new Strawberry();
+        } else {
+            throw new BadFruitException("Bad fruit request");
+        }
+    }
+}
+```
+```java
+package com.benson.note.pij.construct.simplefactory;
+
+import junit.framework.TestCase;
+import org.junit.Test;
+
+public class FruitGardenerTest extends TestCase {
+
+    @Test
+    public void testFactory() {
+        try {
+            Fruit fruit = FruitGardener.factory("Apple");
+            assertTrue(fruit instanceof Apple);
+
+            fruit = FruitGardener.factory("Grape");
+            assertTrue(fruit instanceof Grape);
+
+            fruit = FruitGardener.factory("Strawberry");
+            assertTrue(fruit instanceof Strawberry);
+
+            FruitGardener.factory("something");
+
+        } catch (Exception e) {
+            assertTrue(e instanceof BadFruitException);
+        }
+    }
+}
+```
 
 ### 12.3 简单工厂模式的结构
 
