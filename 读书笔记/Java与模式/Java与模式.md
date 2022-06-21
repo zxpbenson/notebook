@@ -889,9 +889,9 @@
 
 # 第三部分 创建模式
 
->创建模式（Createional Pattern）是对类的实例化过程的抽象化。
->一些系统在创建对象时，需要动态的决定怎样创建对象，创建哪些对象，以及如何组合和表示这些对象。
->创建模式描述了怎样构造和封装这些动态的决定。
+<p>创建模式（Createional Pattern）是对类的实例化过程的抽象化。</p>
+<p>一些系统在创建对象时，需要动态的决定怎样创建对象，创建哪些对象，以及如何组合和表示这些对象。</p>
+<p>创建模式描述了怎样构造和封装这些动态的决定。</p>
 
 <table>
 <caption>创建模式分两类</caption>
@@ -917,7 +917,7 @@
 </tr>
 </table>
 
-下面将介绍以下创建模式及专题：
+<p>下面将介绍以下创建模式及专题：</p>
 
 * 简单工厂模式
 * 工厂方法模式
@@ -929,7 +929,7 @@
 
 ## 第12章 简单工厂（Simple Factory）模式
 
->简单工厂模式是类的创建模式，是由一个工厂对象决定创建出哪一种产品类的实例
+<p>简单工厂模式是类的创建模式，是由一个工厂对象决定创建出哪一种产品类的实例</p>
 
 ### 12.1 工厂模式的几种形态
 
@@ -937,12 +937,16 @@
 * 工厂方法(Factory Method)模式又叫多态工厂(Polymorphic Factory)模式或者虚拟构造子(Virtual Constructor)模式
 * 抽象工厂(Abstract Factory)模式又叫工具箱(Kit or Toolkit)模式
 
+<p>简单工厂模式是工厂方法模式的一个特殊实现。</p>
+
 ### 12.2 简单工厂模式的引进
+
+<p>如下是一套完整的演示代码：</p>
 
 <kbd>Fruit.java</kbd>
 
 ```java
-package com.benson.note.pij.construct.simplefactory;
+package com.benson.note.pij.construct.example1.simplefactory;
 
 public interface Fruit {
     /*
@@ -962,7 +966,7 @@ public interface Fruit {
 <kbd>Apple.java</kbd>
 
 ```java
-package com.benson.note.pij.construct.simplefactory;
+package com.benson.note.pij.construct.example1.simplefactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -1001,7 +1005,7 @@ public class Apple implements Fruit {
 <kbd>Grape.java</kbd>
 
 ```java
-package com.benson.note.pij.construct.simplefactory;
+package com.benson.note.pij.construct.example1.simplefactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -1040,7 +1044,7 @@ public class Grape implements Fruit {
 <kbd>Strawberry.java</kbd>
 
 ```java
-package com.benson.note.pij.construct.simplefactory;
+package com.benson.note.pij.construct.example1.simplefactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -1069,7 +1073,7 @@ public class Strawberry implements Fruit {
 <kbd>BadFruitException.java</kbd>
 
 ```java
-package com.benson.note.pij.construct.simplefactory;
+package com.benson.note.pij.construct.example1.simplefactory;
 
 public class BadFruitException extends Exception {
     public BadFruitException(String message) {
@@ -1081,7 +1085,7 @@ public class BadFruitException extends Exception {
 <kbd>FruitGardener.java</kbd>
 
 ```java
-package com.benson.note.pij.construct.simplefactory;
+package com.benson.note.pij.construct.example1.simplefactory;
 
 public class FruitGardener {
     public static Fruit factory(String which) throws BadFruitException {
@@ -1101,7 +1105,7 @@ public class FruitGardener {
 <kbd>FruitGardenerTest.java</kbd>
 
 ```java
-package com.benson.note.pij.construct.simplefactory;
+package com.benson.note.pij.construct.example1.simplefactory;
 
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -1131,9 +1135,185 @@ public class FruitGardenerTest extends TestCase {
 
 ### 12.3 简单工厂模式的结构
 
+<p>简单工厂模式是<kbd>类</kbd>的创建模式，这个模式的一般性结构如下图所示：</p>
 
+<img src="./image/12.03.001.svg"/>
+
+#### 12.3.1 角色与结构
+
+<p>简单工厂模式就是由一个工厂类根据传入的参量决定创建出哪一种产品类的示例。</p>
+<p>下面以一个示意性的实现为例说明简单工厂模式的结构。</p>
+<p>如下图所示：</p>
+
+<img src="./image/12.03.002.svg"/>
+
+<pre>
+concrete
+英 [ˈkɒŋkriːt]
+美 [ˈkɑːŋkriːt]  
+n. 混凝土
+adj. 混凝土制的;确实的，具体的(而非想象或猜测的);有形的;实在的
+vt. 用混凝土覆盖
+</pre>
+
+<p>从上图可以看出，简单工厂模式涉及到以下三个角色：</p>
+
+<table>
+<tr>
+<td>工厂类（Creator）角色</td>
+<td>
+担任这个角色的是工厂方法模式的核心，含有与应用紧密相关的业务逻辑。</br>
+工厂类在客户端的直接调用下创建产品对象，它往往由一个具体Java类实现。
+</td>
+</tr>
+<tr>
+<td>抽象产品（Product）角色</td>
+<td>
+担任这个角色的类是由工厂方法模式所创建的对象的父类，或他们共同拥有的接口。</br>
+抽象产品角色可以用一个Java接口或者Java抽象类实现。
+</td>
+</tr>
+<tr>
+<td>具体产品（Concrete Product）角色</td>
+<td>工厂方法模式所创建的任何对象都是这个角色的实例，具体产品角色由一个Java类实现。</td>
+</tr>
+</table>
+
+#### 12.3.2 源代码
+
+<kbd>Product.java</kbd>
+
+```java
+package com.benson.note.pij.construct.simplefactory.example2;
+
+public interface Product {
+}
+```
+
+<kbd>ConcreteProduct.java</kbd>
+
+```java
+package com.benson.note.pij.construct.simplefactory.example2;
+
+public class ConcreteProduct implements Product {
+    public ConcreteProduct() {
+    }
+}
+```
+
+<kbd>Creator.java</kbd>
+
+```java
+package com.benson.note.pij.construct.simplefactory.example2;
+
+public class Creator {
+    /*
+     * 静态工厂方法
+     * */
+    public static Product factory() {
+        return new ConcreteProduct();
+    }
+}
+```
+
+<kbd>CreatorTest.java</kbd>
+
+```java
+package com.benson.note.pij.construct.simplefactory.example2;
+
+import junit.framework.TestCase;
+import org.junit.Test;
+
+public class CreatorTest extends TestCase {
+    @Test
+    public void testFactory() {
+        Product product = Creator.factory();
+        assertTrue(product instanceof ConcreteProduct);
+    }
+}
+```
 
 ### 12.4 简单工厂模式的实现
+
+#### 12.4.1 多层次的产品结构
+
+<p>真实系统中，产品具有复杂的等级结构</p>
+<p>如下，树形结构中具有多个抽象产品和具体产品类</p>
+<img src="./image/12.04.001.svg"/>
+<p>如示例，简单工厂模式采用以不变应万变的策略，一律使用同一个工厂类。</p>
+<p>优点：设计简单，产品类的等级结构不会反映到工厂类中来，从而产品的等级结构的变化也不会影响到工厂类。</p>
+<p>缺点：增加新的产品时也需要修改工厂类。</p>
+
+#### 12.4.2 使用Java接口或者Java抽象类
+
+<p>如果模式所生产的具体产品类之间没有共同的业务逻辑，那么抽象产品角色可以是一个Java接口</p>
+<p>反之，抽象产品角色应该是一个抽象类，这些公有的业务逻辑应统一放到抽象类中。</p>
+<img src="./image/12.04.002.svg"/>
+
+#### 12.4.3 多个工厂方法
+
+<p>工厂类可以有多个工厂方法，分别负责创建不同的产品对象。</p>
+<p>比如：java.text.DateFormat类是其子类的工厂类，并且提供了多个静态工厂方法。</p>
+
+#### 12.4.4 抽象产品角色的省略
+
+<p>如果系统仅有一个具体产品角色，可以省略抽象产品角色。</p>
+<p>类图如下：</p>
+<img src="./image/12.04.003.svg"/>
+<p>示例代码如下：</p>
+
+<kbd>ConcreteProduct.java</kbd>
+
+```java
+package com.benson.note.pij.construct.simplefactory.example3;
+
+public class ConcreteProduct {
+    public ConcreteProduct() {
+    }
+}
+```
+
+<kbd>Creator.java</kbd>
+
+```java
+package com.benson.note.pij.construct.simplefactory.example3;
+
+public class Creator {
+    /*
+    * 静态工厂方法
+    * */
+    public static ConcreteProduct factory() {
+        return new ConcreteProduct();
+    }
+}
+```
+
+<kbd>CreatorTest.java</kbd>
+
+```java
+package com.benson.note.pij.construct.simplefactory.example3;
+
+import junit.framework.TestCase;
+import org.junit.Test;
+
+public class CreatorTest extends TestCase {
+    @Test
+    public void testFactory() {
+        ConcreteProduct product = Creator.factory();
+        assertTrue(product instanceof ConcreteProduct);
+    }
+}
+```
+
+#### 12.4.5 工厂角色与抽象产品角色合并
+
+
+
+#### 12.4.6 三个角色全部合并
+
+
+
+#### 12.4.7 产品对象的循环使用和登记式的工厂方法
 
 
 
