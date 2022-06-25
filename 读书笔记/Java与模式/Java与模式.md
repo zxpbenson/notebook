@@ -1307,17 +1307,81 @@ public class CreatorTest extends TestCase {
 
 #### 12.4.5 工厂角色与抽象产品角色合并
 
-
+<p>某些情况下，工厂角色可以由抽象产品角色扮演。</p>
+<p>典型的应用就是java.text.DateFormat类，一个抽象产品类，同时也是子类的工厂。</p>
+<img src="./image/12.04.004.svg"/>
+<p></p>
 
 #### 12.4.6 三个角色全部合并
 
+<p>如果抽象产品角色已经被省略，那工厂角色就可以与具体产品角色合并。</p>
+<p>即，一个产品类为自身的工厂。</p>
+<img src="./image/12.04.005.svg"/>
+<p>三个原本独立的角色：抽象产品，具体产品，工厂类都已经合并为一个类，这个类自行创建自己的实例，代码如下：</p>
 
+<kbd>ConcreteProduct.java</kbd>
+
+```java
+package com.benson.note.pij.construct.simplefactory.example4;
+
+public class ConcreteProduct {
+    public ConcreteProduct() {
+    }
+
+    /*
+    * 静态工厂方法
+    * */
+    public static ConcreteProduct factory() {
+        return new ConcreteProduct();
+    }
+}
+```
+
+<kbd>ConcreteProductTest.java</kbd>
+
+```java
+package com.benson.note.pij.construct.simplefactory.example4;
+
+import junit.framework.TestCase;
+import org.junit.Test;
+
+public class ConcreteProductTest extends TestCase {
+    @Test
+    public void testFactory() {
+        ConcreteProduct product = ConcreteProduct.factory();
+        assertTrue(product instanceof ConcreteProduct);
+    }
+}
+```
 
 #### 12.4.7 产品对象的循环使用和登记式的工厂方法
 
-
+<p>简单工厂模式是一个非常基本的设计模式，因此它会在较为复杂的设计模式中出现。本章之前给出的示例，工厂方法总是简单的调用产品类的构造子来创建新的产品实例，然后返回给客户端，而在实际场景中，工厂方法做的事情可以相当复杂。</p>
+<p>在本书所讨论的所有设计模式中，单例模式与多例模式是建立在简单工厂模式的基础上的，并且要求工厂方法具有特殊逻辑，以便能够循环使用产品的实例。</p>
+<p>很多情况下，产品对象可以循环使用。换言之，工厂方法可以奴化您使用自己已经创建出来的对象，而不是每次一次都创建新的产品对象。工厂方法可以通过登记他所创建的产品对象来达到循环使用产品对象的目的。</p>
+<p>如果工厂方法总是循环使用同一个产品对象，那么这个工厂对象可以使用一个属性来存储这个产品对象。每次客户端调用工厂方法时，工厂方法总是提供这同一个对象。单例模式中就是这样，单例类提供一个静态工厂方法，向外界提供一个唯一的单例类示例。</p>
+<p>如果工厂方法永远循环使用固定数目的一些产品对象，而且这些产品对象的数目并大的话，可以使用一些私有属性存储这些产品对象的引用。比如：一个永远只提供一个产品对象的工厂对象可以使用一个静态变量存储这个产品对象的引用。</p>
+<p>相反，如果工厂方法使用数目不确定，或者数目较大的一些产品对象的话，使用属性存储这些产品对象的引用就不方便了。这时，就应该使用集合对象存储对产品对象的引用。</p>
+<p>无论使用哪种方法，工厂对象都能做到循环使用它所创建的对象。循环的逻辑可能是基于这些产品类的内部状态，比如某一种产品的对象只创建一个，让所有需要处于这个状态上的产品对象的客户端共享这一个实例。</p>
 
 ### 12.5 简单工厂模式与其他模式的关系
+
+#### 12.5.1 单例模式
+
+<p>单例模式使用了简单工厂模式。</p>
+<p></p>
+<p></p>
+
+
+#### 12.5.2 多例模式
+
+
+
+#### 12.5.3 备忘录模式
+
+
+
+#### 12.5.4 MVC模式
 
 
 
