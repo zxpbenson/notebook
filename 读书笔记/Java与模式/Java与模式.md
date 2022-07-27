@@ -1369,7 +1369,7 @@ public class ConcreteProductTest extends TestCase {
 #### 12.5.1 单例模式
 
 <p>单例模式使用了简单工厂模式。即，单例类具有一个静态工厂方法提供自身的实例。一个抽象产品类同时是子类的工厂。如下图：</p>
-<img src="./image/12.04.006.svg"/>
+<img src="./image/12.05.001.svg"/>
 <p>单例模式并不是简单工厂模式的退化场情形，单例模式要求单例类的构造器是私有的，从而限制客户端不能直接将其实例化，必须通过这个静态工厂方法将之实例化，而单例类自身是自己的工厂角色。即，单例类自己负责构造自己的实例。</p>
 <p>单例类使用一个静态的属性存储自己的唯一实例，工厂方法永远只提供这有一个实例。</p>
 
@@ -1383,14 +1383,14 @@ public class ConcreteProductTest extends TestCase {
 #### 12.5.3 备忘录模式
 
 <p>单例模式和多例模式使用一个属性或集合来登记所创建的产品对象，以便可以通过查询这个属性或者集合属性找到并共享已经创建了的产品对象，这就是备忘录模式的应用。备忘录模式的简略类图如下：</p>
-<img src="./image/12.04.007.svg"/>
+<img src="./image/12.05.002.svg"/>
 
 #### 12.5.4 MVC模式
 
 <p>MVC模式并不是严格意义上的设计模式，而是更高层次上的架构模式。MVC模式可以分解为几个设计模式的组合：合成模式、策略模式、观察者模式，也可能会包括装饰模式、调停者模式、迭代子模式以及工厂方法模式等。MVC模式的结构图如下所示。后续还会有专门的章节讨论。</p>
-<img src="./image/12.04.008.svg"/>
+<img src="./image/12.05.003.svg"/>
 <p>简单工厂模式所创建的对象往往属于一个产品等级结构，这个等级结构可以是MVC模式中的视图(View)，而工厂角色本身可以是控制器(Controller)。一个MVC模式可以有一个控制器和多个视图，如下图所示：</p>
-<img src="./image/12.04.009.svg"/>
+<img src="./image/12.05.004.svg"/>
 <p>即，控制器端可以创建合适的视图端，就如同工厂角色创建合适的对象角色一样，而模型端则可以充当这个创建过程的客户端。</p>
 <p>如果系统需要有多个控制器参与这个过程的话，简单工厂模式就不适合了，应当考虑使用工厂方法模式。工厂方法模式后续章节有介绍。</p>
 
@@ -1411,7 +1411,7 @@ public class ConcreteProductTest extends TestCase {
 
 <p>“开-闭”原则要求一个系统的设计能够允许系统在无需修改的情况下，扩展其功能。简单工厂模式是否满足这个条件呢？</p>
 <p>将简单工厂模式系统划分成不同的子系统，再考虑功能扩展对于这些子系统的要求。一般而言，一个系统总是可以划分成为产品的消费者角色（Client）、产品的工厂角色（Factory）、以及产品角色（Product）三个子系统，如下图所示：</p>
-<img src="./image/12.04.010.svg"/>
+<img src="./image/12.06.001.svg"/>
 <p>在这个系统中，功能的扩展体现在引进新的产品上。“开-闭”原则要求系统允许当新的产品加入系统中时，无需对现有代码进行修改。这一点对于产品的消费角色是成立的，而对于工厂角色不成立。</p>
 <p>对于产品消费角色来说，任何时候需要某种产品，只需向工厂角色申请即可。而工厂角色在接到申请后，会自行判断创建和提供哪一个产品。所以产品消费角色无需知道他得到的是哪一个产品；即，产品消费角色无需修改就可以接纳新的产品。</p>
 <p>对于工厂角色来说，增加新的产品是一个痛苦的过程。工厂角色必须知道每一种产品，如何创建它们，以及何时向客户端提供它们。即：接纳新产品就意味着要修改这个工厂角色的源代码。</p>
@@ -1436,11 +1436,13 @@ public class ConcreteProductTest extends TestCase {
 
 <p>DateFormat与SimpleDateFormat的类图如下所示：</p>
 
-<img src="./image/12.04.011.svg"/>
+<img src="./image/12.07.001.svg"/>
 
 > 图中好多方法名字对不上,不确定是不是原书编排错误，不过不影响上下文逻辑表达。
 
 <p>DateFormat类是个抽象类，提供很多静态工厂方法，如：getDateInstance()，提供三个重载方法</p>
+
+【代码清单14】
 
 ```java
     public static final DateFormat getDateInstance();
@@ -1448,28 +1450,70 @@ public class ConcreteProductTest extends TestCase {
     public static final DateFormat getDateInstance(int style, Locale locale);
 ```
 
-<p>这个抽象类并不是也不能有自己的实例。注意DateFormat的工厂方法是静态方法。</p>
-<p>getDateInstance()方法作为一个工厂方法，并没有调用DateFormat的构造器来提供自己的实例，</p>
+<p>这个抽象类通过几个静态方法提供自己的实例(抽象类是不能有自己的实例的，这里有玄机)。注意DateFormat的工厂方法是静态方法。</p>
+<p>getDateInstance()方法作为一个工厂方法，并没有调用DateFormat的构造器来提供自己的实例，作为一个工厂方法，做了两件事：一是运用多态，二是使用静态工厂方法。</p>
+<p>从上面给出的类图可看出SimpleDateFormat是DateFormat的子类型，所以getIndstance()方法可以以DateFormat返回SimpleDateFormat的实例，这是典型的多态原则的应用。</p>
+<p>getInstance()方法必须是静态，客户端否则必须先实例化才能调用。但是父类是抽象类，只能实例化子类。而这是矛盾的。</p>
+<p>这里使用静态工厂方法是为了把具体子类实例化的工作隐藏起来，客户端不必考虑如何将具体子类实例化，由父类负责提供合适的具体子类的实例，这是个典型的简单工厂的应用。</p>
 
 ##### 12.7.1.2 针对抽象编程
 
-<p></p>
+<p>利用具体产品的超类类型将它的真实类型隐藏起来，好处是提供了系统的可扩展性。如果将来有新的具体子类被加入到系统中来，工厂类可以透明的把交给客户端的对象换成新的子类的实例。</p>
+<p>这种把工厂方法返回的类型设置成抽象产品类型的做法，叫做针对抽象编程，这是依赖倒转原则（DIP）的应用。详细介绍见本书章节“依赖倒转原则（DIP）”一章。</p>
 
 ##### 12.7.1.3 本地时间
 
-<p></p>
+<p>与本地日期格式化相对应的是微某种本地时间提供格式化，具体代码见上个代码块【代码清单14】。</p>
+<p>它自身是个抽象类，不可能有自己的实例。所以他们也是提供子类的实例而不是自身的实例。由于其子类必然是DateFormat的子类型，因此返还类型可以是DateFormat类型，这是多态的体现。</p>
 
 ##### 12.7.1.4 一个语法日期的例子
 
-<p></p>
+<p>下面给出这个工具类的使用示例。这里假定本地语言是发育，并针对法语进行时间和日期的格式化。</p>
+
+```java
+package com.benson.note.pij.construct.simplefactory.example5;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+public class DateTester {
+
+    public static void main(String[] args) {
+        Locale local = Locale.FRENCH;
+        Date date = new Date();
+        String now = DateFormat.getTimeInstance(DateFormat.DEFAULT, local).format(date);
+        System.out.println(now);
+        try {
+            date = DateFormat.getDateInstance(DateFormat.DEFAULT, local).parse("16 nov. 01");
+            System.out.println(date);
+        } catch (Exception e) {
+            System.out.println("Parsing exception : " + e);
+        }
+    }
+}
+```
+
+<p>now 包含了按照法语格式写出的当前时间，而date则读入了以法语方式书写的一个日期“16 nov. 01”。打印结果如下：</p>
+
+```
+14:00:56
+Wed Nov 16 00:00:00 CST 1
+```
 
 ##### 12.7.1.5 简单工厂模式的应用
 
-<p></p>
+<p>从上述示例可以看到，由于使用了简单工厂模式，客户端完全不必要操心工厂方法所返回的对象是怎样创建和构成的。工厂方法将实例化哪些对象以及如何实例化这些对象的细节隐藏起来，简化了对这些对象的使用。</p>
+<p>与一般简单工厂模式不同的地方在于，这里的工厂角色与抽象产品角色合并成一个类。也就是说，抽象产品角色负责具体产品角色的创建，这是简单工厂模式的一个特例。</p>
+
+<img src="./image/12.07.002.svg"/>
 
 #### 12.7.2 SAX2库中的XMLReaderFactory与简单工厂模式
 
 <p></p>
+
+
+
 <p></p>
 <p></p>
 <p></p>
