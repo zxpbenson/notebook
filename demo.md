@@ -215,3 +215,139 @@ _下划线_ or <u>下划线</u><br/>
 * Bird
 * McHale
 * Parish
+
+- - -
+
+【数学符号示例】
+
+<p><a href="https://blog.csdn.net/Liu_PiPiPi/article/details/121613743">其余 : Markdown数学公式总结</a></p>
+
+<table>
+<tr><th colspan=2>talbe内用两个$$，table外用一个$</th></tr>
+<tr><td>加法</td><td>a + b = c</td></tr>
+<tr><td>减法</td><td>a - b = c</td></tr>
+<tr><td>乘法</td><td>a × b = c</td></tr>
+<tr><td>除法</td><td>a ÷ b = c</td></tr>
+<tr><td>正负</td><td>$$\pm$$</td></tr>
+<tr><td>负正</td><td>$$\mp$$</td></tr>
+<tr><td>乘号</td><td>$$\times$$</td></tr>
+<tr><td>除号</td><td>$$\div$$</td></tr>
+<tr><td>大于等于</td><td>$$\geq$$</td></tr>
+<tr><td>小于等于</td><td>$$\leq$$</td></tr>
+<tr><td>无穷</td><td>$$\sim$$</td></tr>
+<tr><td>约等于</td><td>$$\approx$$</td></tr>
+<tr><td>不等于</td><td>$$\neq$$</td></tr>
+<tr><td></td><td>$$$$</td></tr>
+<tr>
+<td>分数</td>
+<td>$$a + n\frac{a}{b}$$ $$1\frac{1}{2}$$</td>
+</tr>
+<tr>
+<td>累加</td>
+<td>$$\sum_{i = 0}{n}$$</td>
+</tr>
+<tr>
+<td>累乘</td>
+<td>$$\prod_{i = 0}{n}$$</td>
+</tr>
+<tr>
+<td>上标 / 指数</td>
+<td>$$a^b$$ $${(a+b)}^{c+d}$$</td>
+</tr>
+<tr>
+<td>下标</td>
+<td>$$a_b$$ $${(a + b)}_{c+d}$$</td>
+</tr>
+<tr>
+<td>开方</td>
+<td>$$\sqrt[n]{a + b}$$</td>
+</tr>
+<tr>
+<td>对数</td>
+<td>$$\log{a}^{b}$$ $$\lg{a}$$ $$\ln{a}$$</td>
+</tr>
+<tr><td></td><td>$$$$</td></tr>
+<tr>
+<td>左侧花括号</td>
+<td>
+$$
+左括号方式1
+\begin{cases}
+内容1 \\\\
+内容2 \\\\
+内容3 \\\\
+内容4
+\end{cases}
+$$
+
+$$ 
+左括号方式二 f(x)=
+\left\{
+\begin{aligned}
+x & = & \cos(t) \\\\
+y & = & \sin(t) \\\\
+z & = & \frac{x}{y}
+\end{aligned}
+\right.
+$$
+</td>
+</tr>
+<tr>
+<td>右侧花括号</td>
+<td>
+$$ 
+\left.
+\begin{aligned}
+x & = & \cos(t) \\\\
+y & = & \sin(t) \\\\
+z & = & \frac{x}{y}
+\end{aligned}
+\right\}=f(x) 左括号方式二
+$$
+</td>
+</tr>
+<tr>
+<td>双侧花括号</td>
+<td>
+$$
+左侧标题
+\left\{
+\begin{aligned}
+x & = & \cos(t) \\\\
+y & = & \sin(t) \\\\
+z & = & \frac{x}{y}
+\end{aligned}
+\right\}
+右侧标题
+$$
+</td>
+</tr>
+<tr>
+<td>上侧花括号</td>
+<td>
+$$
+\overbrace{a + b + \cdots + n}^{n个}_{下侧文字}
+$$
+</td>
+</tr>
+</tr>
+<tr>
+<td>下侧花括号</td>
+<td>
+$$
+\underbrace{a + b + \cdots + n}_{n个}^{上侧文字}
+$$
+</td>
+</tr>
+</tr>
+<tr><td></td><td>$$$$</td></tr>
+</table>
+
+
+
+
+
+
+
+
+
