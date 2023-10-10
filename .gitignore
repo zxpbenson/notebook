@@ -28,6 +28,7 @@ hs_err_pid*
 target
 
 
+build/*
 dependency-reduced-pom.xml
 .mvn
 data

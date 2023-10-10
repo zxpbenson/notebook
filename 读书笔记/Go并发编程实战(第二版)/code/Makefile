@@ -8,9 +8,10 @@ ifeq (${GOOS},windows)
     EXT=.exe
 endif
 
-APPS = 4-19 4-20
+APPS = 4-18 4-19 4-20
 all: $(APPS)
 
+$(BLDDIR)/4-18: $(wildcard code/4-18/*.go)
 $(BLDDIR)/4-19: $(wildcard code/4-19/*.go)
 $(BLDDIR)/4-20: $(wildcard code/4-20/*.go)
 
