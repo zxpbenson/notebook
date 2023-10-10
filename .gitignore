@@ -1,1 +1,11 @@
+target
+dependency-reduced-pom.xml
+*.iml
+.idea
+.mvn
+*.jar
+data
+log
+logs
 .DS_Store
+._.DS_Store

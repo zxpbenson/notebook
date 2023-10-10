@@ -145,7 +145,8 @@ Draco Malfoy | Slytherin | 90
 *斜体* or _斜体_<br/>
 ***粗斜体*** or ___粗斜体___<br/>
 _下划线_ or <u>下划线</u><br/>
-~~删除线~~<br/>
+~~Markdown删除线~~<br/>
+<s>HTML中的删除线</s><br/>
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd>
 
 - - -

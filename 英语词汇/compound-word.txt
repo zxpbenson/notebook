@@ -1,0 +1,20 @@
+integrating factor 积分因子
+Gradient-Boosted Trees 梯度增强树
+Random Forests 随机森林
+Strawberry Shake 草莓奶昔
+The Definitive Guide 权威指南
+alternating least squares 交替最小二乘法
+collaborative filtering 协同过滤
+curriculum vitae 简历，工作履历
+decision trees 决策树
+dimensionality reduction 降维
+extract a tooth 拔牙
+extractor hood 抽气机罩
+extramarital affair 婚外情
+fail over 故障转移
+feature extraction and transformation	特征提取与变换
+naive Bayes 朴素贝叶斯
+phasing out 逐步淘汰
+principal component analysis (PCA)	主成分分析（PCA）
+strawberry jam 草莓酱
+
