@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL
+
+Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出
+
+monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数
+
+onMatch和onMismatch都有三个属性值，分别为Accept、DENY和NEUTRAL
+
+分别介绍这两个配置项的三个属性值：
+
+onMatch="ACCEPT" 表示匹配该级别及以上
+onMatch="DENY" 表示不匹配该级别及以上
+onMatch="NEUTRAL" 表示该级别及以上的，由下一个filter处理，如果当前是最后一个，则表示匹配该级别及以上
+onMismatch="ACCEPT" 表示匹配该级别以下
+onMismatch="NEUTRAL" 表示该级别及以下的，由下一个filter处理，如果当前是最后一个，则不匹配该级别以下的
+onMismatch="DENY" 表示不匹配该级别以下的
+
+appenders.appender.RollingFile.fileName/filePattern 可以使用环境变量 ${sys:user.home}
+如 fileName="${sys:user.home}/logs/vereesa-info.log"
+
+-->
+<configuration status="ERROR" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%C %L %t] %m%n</Property>
+        <Property name="LOG_ROOT">${env:LOG_DIR:-logs}</Property>
+        <Property name="LOG_REF">${env:LOG_OUT:-file}</Property>
+        <Property name="LOG_LVL">${env:LOG_LEVEL:-DEBUG}</Property>
+    </Properties>
+    <appenders>
+        <console name="std" target="SYSTEM_OUT">
+            <!--输出日志的格式-->
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </console>
+        <RollingFile name="file" fileName="${LOG_ROOT}/pij.run.log" filePattern="${LOG_ROOT}/pij.run.log.%d{yyyy-MM-dd}">
+            <ThresholdFilter level="${LOG_LVL}" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basepath="log" maxdepth="1">
+                    <!-- D day H hour M min S second-->
+                    <IfLastModified age="7D"/>
+                    <IfFileName glob="pij.run.log*"/>
+                    <!--<IfAccumulatedFileCount exceeds="7"/>-->
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </appenders>
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <loggers>
+        <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
+        <logger name="java.sql" level="WARN"></logger>
+        <logger name="org.apache.zookeeper" level="WARN"></logger>
+        <logger name="com.zaxxer.hikari" level="WARN"></logger>
+        <logger name="net.qihoo.safe.cloud.vereesa.util.config.KVConfig" level="WARN"></logger>
+        <logger name="org.mybatis.spring" level="WARN"></logger>
+        <logger name="org.springframework" level="WARN"></logger>
+        <logger name="org.apache" level="WARN"></logger>
+        <logger name="io.netty" level="WARN"></logger>
+        <logger name="io.grpc.netty" level="WARN"></logger>
+        <logger name="org.apache.kafka" level="WARN"></logger>
+        <logger name="net.qihoo.safe.cloud.vereesa" level="WARN"></logger>
+        <logger name="io.lettuce.core" level="WARN"></logger>
+        <logger name="net.qihoo.safe.cloud.vereesa.util.fiber.http.QuasarHttpClient" level="WARN"></logger>
+        <logger name="org.apache.kafka.clients.NetworkClient" level="WARN"></logger>
+        <logger name="net.qihoo.safe.cloud.vereesa.util.http" level="WARN"></logger>
+        <logger name="net.qihoo.safe.cloud.vereesa.parser" level="WARN"></logger>
+
+        <root level="${LOG_LVL}">
+            <appender-ref ref="${LOG_REF}"/>
+            <appender-ref ref="std"/>
+        </root>
+    </loggers>
+</configuration>
