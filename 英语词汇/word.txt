@@ -85,6 +85,7 @@ capacity
 cardinality
 categories
 category
+chapter
 characteristic
 cherry
 classification
