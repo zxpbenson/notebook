@@ -316,7 +316,9 @@ inheritable
 inheritance
 inherited
 inheritor
+insufficiency
 insufficient
+insufficiently
 integrate
 intend
 intended
@@ -565,5 +567,6 @@ violated
 violating
 violation
 vitae
+vocabulary
 volume
 watermelon
