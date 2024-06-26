@@ -1,0 +1,44 @@
+
+【1】编程接口分四层
+
+SQL
+Table API
+DataStream API / DataSet API
+Stateful Stream Processing API
+
+【1】最核心的四个包
+
+org.apache.flink.api.java (Java DataSet API)
+org.apache.flink.api.scala (Scala DataSet API)
+org.apache.flink.streaming.api.java (Java Stream API)
+org.apache.flink.streaming.api.scala (Scala Stream API)
+
+【1】创建执行环境执行环境
+
+createLocalEnvironment (适合调试用)
+createRemoteEnvironment
+getExecutionEnvironment 
+    Creates an execution environment that represents the context in which the program is currently executed. 
+    If the program is invoked standalone, this method returns a local execution environment, as returned by createLocalEnvironment().
+
+【1】时间类型
+
+
+【1】窗口类型
+
+
+【1】Window Assigner(窗口分配器)
+
+
+【1】WaterMark(水印/水位线)
+
+
+【1】Trigger(触发器)
+
+
+【1】Evictor(驱逐器)
+
+
+【1】KeyedStream
+
+
