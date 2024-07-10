@@ -820,37 +820,308 @@ void main()
 }
 ```
 
-<p>在这里没有定义字符数组，但是定义了一个字符指针变量string，用字符串常量"I love China!"对它初始化。C语言对字符串常量是按字符数组处理的，在内存中开辟了一个字符数组用来存放该字符串常量。对字符指针变量string的初始化，实际上是把</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>在这里没有定义字符数组，但是定义了一个字符指针变量string，用字符串常量"I love China!"对它初始化。C语言对字符串常量是按字符数组处理的，在内存中开辟了一个字符数组用来存放该字符串常量。对字符指针变量string的初始化，实际上是把字符串第一个元素的地址(即存放字符串的字符数组的首元素地址)赋给string(见图10-31)。不要误以为string是一个字符串变量，然后在定义时把"I love China!"这几个字符赋给该字符串变量，这是错误的。</p>
+<img src="./image/10.32.svg"/>
+<p>图 10-32</p>
+
+<p>定义string的部分：</p>
+
+```c
+    char *string = "I love China!";
+```
+
+<p>等价于：</p>
+
+```c
+    char *string;
+    string = "I love China!";
+```
+
+<p>可以看到string被定义为一个指针变量，指向字符型数据，请注意它只能指向一个字符变量或其它字符类型数据，不能同时指向多个字符数据，更不是把"I love China!"这些字符存放到string中(指针变量只能存放地址)，也不是把字符串赋给 * string。只是把"I love China!"的第一个字符的地址赋给指针变量string。不要认为上述定义行等价于：</p>
+
+```c
+    char *string;
+    *string = "I love China!";
+```
+
+<p>在输出这个变量时，要用</p>
+
+```c
+    printf("%s\n", string);
+```
+
+<p>%s是输出字符串时所用的格式符，在输出项中给出字符指针变量名string，则系统先输出它所指向的一个字符数据，然后自动使string加1，使之指向下一个字符，然后再输出一个字符，如此直到遇到字符串结束标志'\0'为止。注意，在内存中，字符串的最后被自动加了一个'\0'(如图10-32所示)。因此在输出时能确定字符串的终止位置。</p>
+<p>说明：通过字符数组名或字符指针变量可以输出一个字符串。而对一个数值型数组，是不能用数组名输出它的全部元素的。</p>
+<p>用%s可以对一个字符串进行整体的输入输出。</p>
+<p>对字符串中字符的存取，可以用下标方法，也可以用指针方法。</p>
+<p>例10.17 将字符串a复制为字符串b</p>
+
+
+```c
+#include <stdio.h>
+
+void main()
+{
+    char a[] = "I am a boy.", b[20];
+    int i;
+    for(i = 0; *(a+1)!='\0'; i++)
+      *(b+i)=*(a+i);
+    *(b+i)='\0';
+    printf("string a is : %s\n", a);
+    printf("string b is : ");
+    for(i=0; b[i]!='\0'; i++)
+      printf("%c", b[i]);
+    printf("\n");
+}
+```
+
+<p>程序中a和b都定义为字符数组，可以通过地址访问其数组元素。在for语句中，先检查a[i]是否为'\0'，如果不等于'\0'，表示字符尚未处理完，就将a[i]的值赋给b[i]，即复制一个字符。在for循环中将a串全部赋给了b串。最后将'\0'复制过去。此时n的值是字符串有效字符的个数n加1。第二个for循环中用下标法表示一个数组元素(即一个字符)。</p>
+<p>也可以设指针变量，用它的值的改变来指向字符串中的不同字符。</p>
+<p>例10.18 用指针变量来处理例10.17问题</p>
+
+
+```c
+#include <stdio.h>
+
+void main()
+{
+    char a[] = "I am a boy.", b[20], *p1, *p2;
+    int i;
+    p1=a; p2=b;
+    for(; *p1!='\0'; p1++,p2++)
+      *p2=*p1;
+    *p2='\0';
+    printf("string a is : %s\n", a);
+    printf("string b is : ");
+    for(i=0; b[i]!='\0'; i++)
+      printf("%c", b[i]);
+    printf("\n");
+}
+```
+
+<img src="./image/10.33.svg"/>
+<p>见图: 10-33</p>
 
 ### 10.4.2 字符指针作函数参数
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>将一个字符串从一个函数传递到另一个函数，可以用地址传递的办法，即用字符数组名做参数，也可以用指向字符的指针变量做参数。在被调用的函数中可以改变字符串的内容，在主调函数可以得到改变了的字符串。</p>
+<p>例10.19 用函数调用实现字符串的复制</p>
+<p>(1) 用字符数组作参数</p>
+
+```c
+#include <stdio.h>
+
+void main()
+{
+    void copy_string(char from[], char to[]);
+    char a[] = "I am a teacher.";
+    char b[] = "You are a student.";
+    printf("string a =%s\nstring b = %s\n", a, b);
+    printf("copy string a to string b:\n");
+    copy_string(a, b);
+    printf("\n string a = %s\nstring b = %s\n", a, b);
+}
+
+void copy_string(char from[], char to[]) 
+{
+    int i = 0;
+    while(from[i] != '\0')
+        {to[i]=from[i];i++}
+    to[i] = '\0';
+}
+```
+
+<p>a和b是字符数组。初始值如图10-34(a)所示。copy_string函数的作用是将from[i]赋值给to[i]，直到from[i]的值等于'\0'为止。在调用copy_string函数时，将a和b第一个字符的地址分别传递给形参数组名from和to。因此from[i]和a[i]是同一个单元，to[i]和b[i]是同一个单元。程序执行完以后，b数组的内容如图10-34(b)所示。可以看到由于b数组原来的长度大于a数组，因此在将a数组复制到b数组后，未能全部覆盖b数组原有内容。b数组最后3个元素仍保留原状。在输出b时由于按照%s(字符串)输出，遇'\0'即告结束，因此第一个'\0'后的字符不输出。如果不采取%s格式输出而用%c逐个字符输出是可以输出后面这些字符的。</p>
+<p>在main函数中也可以不定义字符数组，而用字符指针变量。mian函数可以改写如下：</p>
+
+
+```c
+#include <stdio.h>
+
+void main()
+{
+    void copy_string(char from[], char to[]);
+    char *a = "I am a teacher.";
+    char *b = "You are a student.";
+    printf("string a =%s\nstring b = %s\n", a, b);
+    printf("copy string a to string b:\n");
+    copy_string(a, b);
+    printf("\n string a = %s\nstring b = %s\n", a, b);
+}
+
+void copy_string(char from[], char to[]) 
+{
+    int i = 0;
+    while(from[i] != '\0')
+        {to[i]=from[i];i++}
+    to[i] = '\0';
+}
+```
+
+<p>运行结果与上面程序相同。</p>
+<p>(2)形参用字符指针变量。</p>
+<p>程序如下：</p>
+
+
+```c
+#include <stdio.h>
+
+void main()
+{
+    void copy_string(char *from, char *to);
+    char *a = "I am a teacher.";
+    char *b = "You are a student.";
+    printf("string a =%s\nstring b = %s\n", a, b);
+    printf("copy string a to string b:\n");
+    copy_string(a, b);
+    printf("\n string a = %s\nstring b = %s\n", a, b);
+}
+
+void copy_string(char *from, char *to) 
+{
+    for(; *from != '\0'; from++, to++)
+        *to=*from;
+    *to = '\0';
+}
+```
+
+<p>形参to和from是字符指针变量。相当于例10.18中的p1和p2。</p>
+<p>(3) 对copy_string函数还可以做简化</p>
+<p>(3.1) 将copy_string函数改写为：</p>
+
+```c
+#include <stdio.h>
+
+void copy_string(char *from, char *to) 
+{
+    while((*to = *from) != '\0')
+        {from++; to++}
+}
+```
+
+<p>(3.2) 还可以改写为：</p>
+
+```c
+#include <stdio.h>
+
+void copy_string(char *from, char *to) 
+{
+    while((*to++ = *from++) != '\0');
+}
+```
+
+<p>(3.3) 还写为：</p>
+
+```c
+#include <stdio.h>
+
+void copy_string(char *from, char *to) 
+{
+    while(*from != '\0')
+        *to++ = *from++;
+    *to = '\0';
+}
+```
+
+<p>字符可以用其ASCII码代替。例如“ch='a'”可以用“ch=97”代替，“while(ch != 'a')”可以用“while(ch != 97)”代替。因此，“while(ch != '\0')”可以用“while(ch != 0)”代替('\0'的ASCII码是0)。而关系表达式“*from != 0”又可以简化为“*from”，这是因为若*from的值不等于0，则“*from”为真，同时“*from != 0”也为真。因此“while(*from != 0)”和“while(*from)”是等价的。所以函数体可以简化为：</p>
+
+```c
+#include <stdio.h>
+
+void copy_string(char *from, char *to) 
+{
+    while(*from)
+        *to++ = *from++;
+    *to = '\0';
+}
+```
+
+<p>(3.4) 上面的while语句还可以进一步简化为：</p>
+
+```c
+#include <stdio.h>
+
+void copy_string(char *from, char *to) 
+{
+    while(*to++ = *from++);
+}
+```
+
+<p>它与下面的语句等价：</p>
+
+```c
+#include <stdio.h>
+
+void copy_string(char *from, char *to) 
+{
+    while((*to++ = *from++) != '\0');
+}
+```
+
+<p>将*from赋给*to，如果赋值后的*to值等于'\0'，则循环终止('\0'已赋给*to)。</p>
+<p>(3.5) 函数体中的while语句也可以改用for语句：</p>
+
+```c
+#include <stdio.h>
+
+void copy_string(char *from, char *to) 
+{
+    for(;(*to++ = *from++) != '\0';);
+}
+```
+
+<p>或</p>
+
+```c
+#include <stdio.h>
+
+void copy_string(char *from, char *to) 
+{
+    for(;*to++ = *from++;);
+}
+```
+
+<p>(3.6) 也可以用指针变量，函数copy_string改写为：</p>
+
+```c
+#include <stdio.h>
+
+void copy_string(char from[], char to[]) 
+{
+    char *p1, *p2;
+    p1 = from; p2 = to;
+    while((*p2++ = *p1++) != '\0');
+}
+```
+
+<p>以上各种用法，变化多端，使用十分灵活，初看起来不太习惯，含义不直观。初学者会有些困难，也容易出错。但对C熟练之后，以上形式的使用是比较多的，读者应逐渐熟悉并掌握。</p>
+<p>归纳起来，作为函数参数，有以下几种情况：见表10-3。</p>
+
+<p>表 10-3</p>
+<table>
+<tr>
+<td>实参</td>
+<td>形参</td>
+<td>实参</td>
+<td>形参</td>
+</tr>
+<tr>
+<td>数组名</td>
+<td>数组名</td>
+<td>字符指针变量</td>
+<td>字符指针变量</td>
+</tr>
+<tr>
+<td>数组名</td>
+<td>字符指针变量</td>
+<td>字符指针变量</td>
+<td>数组名</td>
+</tr>
+</table>
 
 ### 10.4.3 对使用字符指针变量和字符数组的讨论
 
+<p></p>
 <p></p>
 <p></p>
 <p></p>
