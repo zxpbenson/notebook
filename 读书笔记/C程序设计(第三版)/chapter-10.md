@@ -1491,7 +1491,7 @@ pt = (*pointer+n);
 <p>例 10.25 对上例中的学生，找出其中不及格课程的学生及其学生号。</p>
 
 ```c
-#include <stdio.h>
+# include <stdio.h>
 
 void main()
 {
@@ -1543,12 +1543,67 @@ float *search(float (* pointer)[4])
 类型名 * 数组名[数组长度];
 ```
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>例如：</p>
+
+```c
+int *p[4];
+```
+
+<p>由于[]比*优先级高，因此p先与[4]结合，形成p[4]的形式，这显然是数组形式，它有四个元素。然后再与p前面的*结合，*表示次数组是指针类型的，每个数组元素(相当于一个指针变量)都可指向一个整型变量。</p>
+<p>注意不要写成</p>
+
+```c
+int(*p)[4];
+```
+
+<p>这是指向一维数组的指针变量。前面介绍过。</p>
+<p>为什么要用到指针数组？因为它适合用来指向若干个字符串，使字符串处理更加灵活。如果用二维字符串数组的话，会浪费内存单元，因为各串长度不一。</p>
+<p>例 10.26 将若干字符串按字母顺序(由小到大)输出。</p>
+
+```c
+# include <stdio.h>
+# include <string.h>
+
+void main()
+{
+    void sort(char *name[], int n);
+    void print(char *name[], int n);
+    char *name[] = {"Follow me", "BASIC", "Great Wall", "FORTRAN", "Computer design"};
+    int n = 5;
+    sort(name, n);
+    print(name, n);
+}
+
+void sort(char *name[], int n)
+{
+    char * temp;
+    int i, j, k;
+    for(i = 0; i < n - 1; i++)
+    {
+        k = i;
+        for(j = i + 1; j < n; j++)
+        {
+            if(strcmp(name[k], name[j]) > 0)
+                k = j;
+                
+            if(k != i)
+            {
+                temp = name[i];
+                name[i] = name[k];
+                name[k] = temp;
+            }
+        }
+    }
+}
+
+void print(char *name[], int)
+{
+    int i;
+    for(i = 0; i < n; i++)
+        printf("%s\n", name[i]);
+}
+```
+
 <p></p>
 <p></p>
 <p></p>
