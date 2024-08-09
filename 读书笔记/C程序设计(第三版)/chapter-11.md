@@ -544,147 +544,240 @@ void print(struct student stu)
 }
 ```
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>struct student被定义为外部的类型，同一源文件中的各个函数都可以用它来定义变量。</p>
+<p>例 11.6 将上题改用指向结构体变量的指针作参数。</p>
+
+```c
+#include <stdio.h>
+#include <string.h>
+#define FORMAT "%d\n%s\n%f\n%f\n%f\n"
+
+struct student
+{
+    int num;
+    char name[20];
+    float score[3];
+}stu = {12345, "Li Li", 67.5, 89, 78.6};
+
+void main()
+{
+    void print(struct student*);
+    print(&stu);
+}
+
+void print(struct student *p)
+{
+    printf(FORMAT, p->num, p->name, p->score[0], p->score[1], p->score[2]);
+    printf("\n");
+}
+```
+
+<p>在main函数中的对各成员赋值也可以改用scanf函数输入：</p>
+
+```c
+    //注意输入项表中stu.name前没有“&”号，
+    //因为stu.name是字符数组名，本身代表地址，不应写成 &stu.name
+    scanf("%d%s%f%f%f", &sut.num, sut.name, &sut.score[0], &sut.score[1], &sut.score[2]);
+```
+
+<p>输入时用下面形式输入：</p>
+
+```
+12345 LiLi 67.5 89 78.6\n
+```
 
 ## 11.7 用指针处理链表
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-
 ### 11.7.1 链表概述
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>链表是一种常见的重要数据结构。它是动态的进行存储分配的一种结构。用数组存放数据时，必须事先定义固定的长度(即元素个数)。多了浪费，少了不够用。链表则没有这个缺点，它根据需要开辟内存单元。</p>
+
+<img src="./image/11.10.svg"/>
+<p>图: 11-10</p>
+
+<p>链表有一个“头指针”变量，图中以head表示，它存放一个地址值，该地址指向一个元素。链表中每一个元素称为“结点”，每个结点都应该包括两部分：用户需要的时机数据和下一个结点的地址。head指向第一个元素，第一个元素又指向第二个元素。。。依次类推，直到最后一个元素，该元素不再指向其它元素，它称为“表尾”，它的地址部分放一个“NULL”(表示“空地址”)，链表到此结束。</p>
+<p>可以看到链表中各元素在内存中可以不是连续存放的。要找某一元素，必须先找到上一个元素，根据它提供的上一个元素，根据它提供的下一个元素的地址才能找到下一个元素。如果不提供“头指针”(head)，则整个链表都无法访问。链表如同一条铁链一样，一环扣一环，中间是不能断开的。</p>
+<p>可以看到，这种链表的数据结构，必须利用指针变量才能实现，即一个节点中应该包含一个指针变量，用它存放下一节点的地址。</p>
+<p>前面介绍的结构体变量，用它作链表中的节点是最合适的。用一个指针类型的成员来存放下一节点的地址。例如，可以这样设计一个结构体类型：</p>
+
+```c
+struct student
+{
+    int num;
+    float score;
+    struct student *next;
+};
+```
+
+<p>注意：上面只是定义了一个struct student类型，并未实际分配存储空间。只有定义了变量才分配内存单元。</p>
 
 ### 11.7.2 简单链表
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>下面通过例子来说明如何建立和输出一个简单链表。</p>
+<p>例 11.7 建立一个简单链表，它由三个学生数据的节点组成。输出各节点中的数据。</p>
+
+```c
+#include <stdio.h>
+#define NULL 0
+
+struct student
+{
+    int num;
+    float score;
+    struct student *next;
+};
+
+void main()
+{
+    struct student a,b,c, *head, *p;
+    a.num = 10101; a.score = 89.5;
+    a.num = 10103; a.score = 90;
+    a.num = 10107; a.score = 85;
+    head = &a;
+    a.next = &b;
+    b.next = &c;
+    c.next = NULL;//指针值要小心使用，如果不初始化，是个不可预料的值
+    p = head;
+    do
+    {
+        printf("%ld %5.1f\n", p->num, p->score);
+        p = p->next;
+    }while(p != NULL);
+}
+```
+
+<p>本例中所有节点都是在程序中定义的，不是临时开辟的，也不能用完后释放，这种链表称为“静态链表”；</p>
 
 ### 11.7.3 处理动态链表所需的函数
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>前面讲过，链表结构是动态地分配存储的，即在需要时才开辟一个节点的存储单元。这需要动态的开辟和释放存储单元，C语言编译系统的库函数提供了以下有关函数：</p>
+<p>（1）malloc函数</p>
+<p>函数原型：</p>
+
+```c
+void *malloc(unsigned int size)
+```
+
+<p>其作用是在内存的动态存储区中分配一个长度为size的连续空间。此函数的值(即“返回值”)是一个指向分配域起始地址的指针(类型为void)。如此函数未能成功执行(例如内存空间不足)，则返回空指针(NULL)。</p>
+<p>（2）calloc函数</p>
+<p>函数原型：</p>
+
+```c
+void *calloc(unsigned n, unsigned size)
+```
+
+<p>其作用是在内存的动态存储区中分配n个长度为size的连续空间。函数返回一个指向分配域起始地址的指针；如果分配不成功，返回NULL。</p>
+<p>用calloc函数可以为一维数组开辟动态存储空间，n为数组元素个数，每个元素长度为size。</p>
+<p>（3）free函数</p>
+<p>其函数原型为</p>
+
+```c
+void free(void *p)
+```
+
+<p>其作用是释放由p指向的内存区，使这部分内存区能被其它变量使用。p是在最近一次调用calloc或malloc函数时返回的值。free函数无返回值。</p>
+<p>以前的C版本提供的malloc和calloc函数得到的是指向字符型数据的指针。ANSI C提供的malloc和calloc函数规定为void *类型。</p>
+<p>有了本节所介绍的初步知识，下面就可以对链表进行操作了(包括建立链表、插入或删除链表中的一个节点等)。</p>
 
 ### 11.7.4 建立动态链表
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>所谓建立动态链表是指在程序执行过程中从无到有地建立起一个链表，即一个一个地开辟节点和输入各节点数据，并建立起前后相链的关系。</p>
+<p>例 11.8 写一函数建立一个有3名学生数据的单向动态链表。</p>
+
+
+```c
+#include <stdio.h>
+#include <malloc.h>
+#define NULL 0
+#define LEN sizeof(struct student)
+
+struct student
+{
+    int num;
+    float score;
+    struct student *next;
+};
+
+int n;
+struct student *create(void)
+{
+    struct student *head;
+    struct student *p1, *p2;
+    n = 0;
+    p1 = p2 = (struct student *)malloc(LEN);
+    scanf("%ld,%f", &p1->num, &p1->score);
+    head = NULL;
+    while(p1->num != 0)
+    {
+        n = n+1;
+        if(n == 1)head = p1;
+        else p2->next = p1;
+        p2 = p1;
+        p1 = (struct student *)malloc(LEN);
+        scanf("%ld,%f", &p1->num, &p1->score);
+    }
+    p2->next = NULL;
+    return (head);
+}
+```
+
+<p>函数首部在括号内写void，表示本函数没有形参，不需要进行数据传递。</p>
 
 ### 11.7.5 输出链表
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>将链表中各节点的数据依次输出。</p>
+<p>例 11.9 编写一个输出链表的函数print。</p>
+
+```c
+void print(struct student *head)
+{
+    struct student *p;
+    printf("\nNow, These %d records are :\n", n);
+    p = head;
+    if(head != NULL)
+    {
+        do{
+            printf("%ld %5.1f\n", p->num, p->score);
+            p = p->next;
+        }while(p != NULL);
+    }
+    
+}
+```
 
 ### 11.7.6 对链表的删除操作
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>从一个动态链表中删除一个节点，并不是真正从内存中把它抹掉，而是把它从链表中分离开来。</p>
+<p>例 11.10 写一函数删除动态链表中指定的节点。</p>
+<p>删除节点的函数del如下：</p>
+
+```c
+struct student * del(struct student * head, long num)
+{
+    struct student *p1, *p2;
+    if(head == NULL){
+        printf("\nlist null!\n");
+        goto end;
+    }
+    p1 = head;
+    while(num != p1->num && p1->next != NULL) {//p1指向的不是所要找的节点，并且后面还有节点
+        p2 = p1;
+        p1 = p1->next;//p1后移了一个节点
+    }
+    if(num == p1->num){//找到了
+        if(p1 == head) head = p1->next;//若p1指向的是首节点，把第二个节点地址赋予head
+        else p2->next = p1->next;//否则将下一节点地址赋给前一节点地址
+        printf("delete : %ld\n", num);
+        n = n - 1;
+    } else {
+        printf("%ld not been found!\n", num);
+    }
+    end;
+    return(head);
+}
+```
+
+<p>函数的类型是指向struct student类型数据的指针，它的值是链表的头指针。函数参数巍峨heead赫尔要删除的学号num。head的值可能在函数执行过程中被改变(当删除第一个节点时)。</p>
 
 ### 11.7.7 对链表的插入操作
 
@@ -781,3 +874,49 @@ void print(struct student stu)
 <p></p>
 <p></p>
 <p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
