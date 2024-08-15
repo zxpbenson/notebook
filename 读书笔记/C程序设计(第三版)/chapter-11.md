@@ -989,17 +989,83 @@ m = a; //不能引用共用体变量名以得到一个值
 
 <p>（5）不能把共用体变量作为函数参数，也不能使函数返回共用体变量，但可以使用指向共用体变量的指针(与结构体变量这种用法相仿)。</p>
 <p>（6）共用体类型可以出现在结构体类型定义中，也可以定义共用体数组。反之，结构体也可以出现在共用体类型定义中，数组也可以作为公用体的成员。</p>
-<p>例 11.12 设有若干</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>例 11.12 结构体共用体综合示例</p>
+
+```c
+#include<stdio.h>
+
+struct
+{
+    int num;
+    char name[10];
+    char sex;
+    char job;
+    union
+    {
+        int banji;
+        char positioon[10];
+    } category;
+} person[2];
+
+void main() 
+{
+    int i;
+    for(i = 0; i < 2; i++)
+    {
+        scanf("%d %s %c %c", &person[i].num, &person[i].name, &person[i].sex, &person[i].job);
+        if(person[i].job == 's')
+            scanf("%d", &person[i].category.banji);
+        if(person[i].job == 't')
+            scanf("%d", &person[i].category.position);
+        else
+            printf("input error!");
+    }
+    printf("\n");
+    printf("No. Name sex joob class/position\n");
+    for(i = 0; i < 2; i++)
+    {
+        if(person[i].job == 's')
+            printf("%-6d%-10s%-3c%-3c%-6d\n", person[i].num, person[i].name, person[i].sex, person[i].job, person[i].category.banji);
+        else
+            printf("%-6d%-10s%-3c%-3c%-6d\n", person[i].num, person[i].name, person[i].sex, person[i].job, person[i].category.position);
+    }
+}
+```
 
 ## 11.9 枚举类型
 
+<p>枚举是ANSI C新标准所增加的。</p>
+<p>如果一个变量只有几种可能的值，则可以定义为枚举类型。所谓“枚举”是指将变量的值一一列举出来，变量的值只限于列举出来的值的范围内。</p>
+<p>声明枚举类型用enum开头。例如：</p>
+
+```c
+enum weekday{sun, mon, tue, wed, thu, fri, sat};
+```
+
+<p>声明了一个枚举类型 enum weekday，可以用此类型来定义变量。例如：</p>
+
+```c
+enum weekday workday, work_end;
+```
+
+<p>workday和week_end被定义为枚举变量，它们的值只能是sun到sat之一。例如：</p>
+
+```c
+workday = mon；
+work_end = sun;
+```
+
+<p>也可以直接定义枚举变量，例如：</p>
+
+```c
+enum weekday{sun, mon, tue, wed, thu, fri, sat} workday, work_end;
+```
+
+<p>其中，sun、mon等称为枚举元素或枚举常量。它们是用户定义的标识符。这些标识符并不自动的代表什么含义。例如，不能因为写成sun，就自动代表“星期天”。其实不写sun而写成sunday也可以。用什么标识符代表什么含义，完全由程序员决定，并在程序中作相应处理。</p>
+<p>说明：</p>
+<p></p>
+<p></p>
+<p></p>
 <p></p>
 <p></p>
 <p></p>
@@ -1012,17 +1078,7 @@ m = a; //不能引用共用体变量名以得到一个值
 
 ## 11.10 用 typedef定义类型
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
 <p></p>
 <p></p>
 <p></p>
