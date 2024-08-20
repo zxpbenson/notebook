@@ -1140,43 +1140,165 @@ workday = (enum weekday)(5-3);
 
 void main()
 {
-    
+    enum color {red, yellow, blue, white, black};
+    enum color i,j,k,pri;
+    int n, loop;
+    n = 0;
+    for(i = red; i <= black; i++)
+        for(j = red; j <= black; j++)
+            if(i != j) {
+                for(k = red; k <= black; k++)
+                    if((k != i) && (k != j)) {
+                        n = n + 1;
+                        printf("%-4d", n);
+                        for(loop = 1; loop <= 3; loop++) {
+                            switch(loop) {
+                                case 1 : pri = i; break;
+                                case 2 : pri = j; break;
+                                case 3 : pri = k; break;
+                                default : break;
+                            }
+                            switch(pri) {
+                                case red : printf("%-10s", red); break;
+                                case yellow : printf("%-10s", yellow); break;
+                                case blue : printf("%-10s", blue); break;
+                                case white : printf("%-10s", white); break;
+                                case black : printf("%-10s", black); break;
+                                default : break;
+                            }
+                        }
+                        printf("\n");
+                    }
+            }
+    printf("\ntotal : %5d\n", n);
 }
 
 ```
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>枚举常量比数字常量更直观，因为枚举元素的标识符“见名知意”。枚举变量的值限制在定义时规定的几个枚举元素范围内，如果赋予它一个超出枚举元素范围的值，就会出现出错信息。</p>
 
 ## 11.10 用 typedef定义类型
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>除了可以直接用C提供的标准类型名(如int、char、float、double、long等)和自己声明的结构体、共用体、指针、枚举类型外，还可以用typedef声明新的类型名来代替已有的类型名。例如：</p>
 
+```c
+typedef int INTEEGRE;
+typedef float REAL;
+```
 
+<p>指定INTEGER代表int类型，REAL代表float。这样，以下两行等价：</p>
 
+```c
+int i, j; float a, b;
+```
+
+```c
+INTEGRE i, j; REAL a, b;
+```
+
+<p>可以声明结构体类型：</p>
+
+```c
+typedef struct {
+    int month;
+    int day;
+    int year;
+} DATE;
+```
+
+<p>声明新类型名DATE，它代表上面指定的一个结构体类型。这时就可以用DATE定义变量：</p>
+
+```c
+DATE birthday;//不要写成 struct DATE birthday
+DATE *p;//p为指向此结构体类型数据的指针
+```
+
+<p>还可以进一步：</p>
+
+```c
+typedef int NUM[100];
+NUM n;
+
+typedef char *STRING;
+STRING p, s[10];
+
+typedef int (*POINTER)();//声明POINTER为指向函数的指针类型，该函数返回整型值
+POINTER p1, p2;
+```
+
+<p>归纳起来，声明一个新的类型名的方法是：</p>
+<p>（1）先按定义变量的方法写出定义体(如：int i;)。</p>
+<p>（2）将变量名换成新类型名(例如：将i换成COUNT)。</p>
+<p>（3）在最前面加typedef(例如：typedef int COUNT)。</p>
+<p>（4）然后可以用新类型名去定义变量。</p>
+<p>***习惯上常把用typedef声明的类型名用大写字母表示，以便与系统提供的标准类型标识符相区别。***</p>
+<p>说明：</p>
+<p>（1）用typedef可以声明各种类型名，但不能用来定义变量。用typedef可以声明数组类型、字符串类型，使用比较方便。例如定义数组，原来是用</p>
+
+```c
+int a[10], b[10], c[10], d[10];
+```
+<p>由于都是一维数组，大小也相同，可以先将此数组类型声明为一个名字：</p>
+
+```c
+typedef int ARR[10];
+```
+
+<p>然后用ARR去定义数组变量：</p>
+
+```c
+ARR a, b, c, d;
+```
+
+<p>ARR为数组类型，它包含10个元素。因此a、b、c、d都被定义为一维数组，含10个元素。</p>
+<p>可以看到，用typedef可以将数组类型和数组变量分离开来，利用数组类型可以定义多个数组变量。同样可以定义字符串类型、指针类型等。</p>
+<p>（2）用typedef只是对已经存在的类型增加一个类型名，而没有创造新的类型。例如，前面声明的整型类型COUNT，它无非是对int型另给一个新名字。又如：</p>
+
+```c
+typedef int NUM[10];
+```
+
+<p>无非是把原来用“int n[10];”定义的数组变量的类型用一个新的名字NUM表示出来。无论用哪种方式定义变量，效果都是一样的。</p>
+<p>（3）typedef与#define有相似之处，例如：</p>
+
+```c
+typedef int COUNT;
+```
+
+<p>和</p>
+
+```c
+#define COUNT int
+```
+
+<p>作用都是用COUNT代表int。但事实上，它们二者是不同的。#define是在预编译时处理的，它只能作简单的字符串替换，而typedef是在编译时处理的。实际上它并不是作简单的字符串替换，例如：</p>
+
+```c
+typedef int NUM[10];
+```
+
+<p>并不是用 “NUM[10]” 去代替 “int”，而是采用如同定义变量的方法那样来声明一个类型(就是前面介绍过的将原来的变量名换成类型名)。</p>
+<p>（4）当不同源文件中用到同一类型数据(尤其是像数组、指针、结构体、共用体等类型数据)时，常用 typedef 声明一些数据类型，把它们单独放在一个文件中，然后在需要用到它们的文件中用 #include 命令把它们包含进来。</p>
+<p>（5）使用 typedef 有利于程序的通用与移植。有时程序会依赖于硬件特性，用typedef便于移植。例如，有的计算机系统int型数据用两个字节，数值范围为 -32768 ~ 32767，而另外一些机器则以4个字节存放一个整数，数值范围为+-21亿。如果把一个C程序从一个以4个字节存放整数的计算机系统移植到以2个字节存放整数的系统，按一般办法需要将定义变量中的每个int改为long。例如将</p>
+
+```c
+int a, b, c;
+```
+
+<p>改为</p>
+
+```c
+long a, b, c;
+```
+
+<p>如果程序中有多处用int定义变量，则要改动多处。现在可以用一个INTEGER声明 int：</p>
+
+```c
+typedef int INTEGER;
+```
+
+<p>在程序中所有整型变量都用 INTEGER 定义。在移植时只需要改动 typedef 定义体即可：</p>
+
+```c
+typedef long INTEGER;
+```
