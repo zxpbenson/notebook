@@ -14,16 +14,16 @@ pron：代词（Pronoun）
 num：数词（Numeral）
 int：感叹词（Interjection）
 
-abbreviated
-abbreviation
-accumulase
-accumulate
+abbreviated adj. 简短的,缩短的
+abbreviation n. 缩略,缩写;简称
+accumulase n. 聚积酶;
+accumulate v. 积累;积聚;积攒 to collect a large number of things over a long period of time
 accumulated
 accumulates
 accumulating
 accumulation
 accumulative
-accumulator
+accumulator n. 蓄电池;累加器 a battery that collects and stores electricity
 accuracy
 achieve
 acknowledge
@@ -541,9 +541,9 @@ stochastic
 stochastic
 strategy
 stratified
-straw
+straw n. 禾秆;麦秆;稻草
 strawberry
-strength
+strength n. 体力;力气;力量;实力
 substitutor
 successive
 successor
