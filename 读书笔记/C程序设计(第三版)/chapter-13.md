@@ -270,66 +270,308 @@ void main()
 
 ```
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>文件名由键盘输入，赋给字符数组filename。fopen函数中的第一个参数“文件名”可以直接写成字符串常量形式(如file1.c)，也可以用字符数组名，在字符数组中存放文件名(如本例所用的方法)。本例运行时，从键盘输入磁盘文件名，然后输入要写入该磁盘文件的字符，“#”是表示输入结束，程序写入到磁盘文件中，同时在屏幕上显示这些字符，以便核对。exit是标准C的库函数，作用是使程序终止，用此函数应当加入stdlib头文件。</p>
+<p>例 13.2 将一个磁盘文件中的信息复制到另一个磁盘文件中。</p>
+
+```c
+# include <stdio.h>
+# include <stdlib.h>
+
+void main()
+{
+  FILE *in, *out;
+  char ch, infile[10], outfile[10];
+  printf(Enter the infile name :\n);
+  scanf("%s", infile);
+  printf(Enter the outfile name :\n);
+  scanf("%s", outfile);
+  if((in=fopen(infile, "r")) == NULL)
+  {
+    printf("can not open infile\n");
+    exit(0);
+  }
+  if((in=fopen(outfile, "w")) == NULL)
+  {
+    printf("can not open outfile\n");
+    exit(0);
+  }
+  while(!feof(in))fputc(fgetc(in), out);
+  fclose(in);
+  fclose(out);
+}
+```
+
+<p>以上程序是按文本文件方式处理的。也可以用此程序来赋值一个二进制文件，只需将两个fopen函数中的"r"和"w"分别改成"rb"和"wb"即可。</p>
+<p>也可以在输入命令行时把两个文件名一起输入。这时要用到main函数的参数。程序可改为：</p>
+
+```c
+# include <stdio.h>
+# include <stdlib.h>
+
+void main(int argc, char *argv[])
+{
+  FILE *in, *out;
+  cha ch;
+  if(argc != 3){
+    printf("You forgot to enter a filename\n");
+    exit(0);
+  }
+  if((in=fopen(argv[1], "r")) == NULL)
+  {
+    printf("can not open infile\n");
+    exit(0);
+  }
+  if((in=fopen(argv[2], "w")) == NULL)
+  {
+    printf("can not open outfile\n");
+    exit(0);
+  }
+  while(!feof(in))fputc(fgetc(in), out);
+  fclose(in);
+  fclose(out);
+}
+```
+
+<p>在输入本程序的可执行文件名后，在输入两个参数输入文件名和输出文件名，分别到argv[1]和argv[2]中，argv[0]的内容是本程序的可执行文件名，argc的值等于3(因为此命令行共有3个参数)。如果输入的参数少于3个，程序会提示你忘了输入一个文件名。</p>
+<p>说明一点，为了书写方便，在stdio.h中，系统把fputc和fgetc定义为宏名putc和getc：</p>
+
+```c
+# define putc(ch,fp) fputc(ch,fp)
+# define getc(fp) fgetc(fp)
+```
 
 ### 13.4.2 fread 函数和 fwrite 函数
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>用getc和putc函数可以用来读写文件中的一个字符。但是常常要求一次读入一组数据(例如，一个实数或一个结构体变量的值)，ANSI C标准提出设置两个函数(fread和fwrite)，用来读写一个数据块。调用形式为：</p>
+
+```c
+fread(buffer, size, count, fp);
+fwrite(buffer, size, count, fp);
+```
+
+<p>参数介绍：</p>
+<p>buffer：是一个指针。对fread来说，它是读入数据的存放地址。对fwrite来说是要输出数据的地址(以上指的是起始地址)。</p>
+<p>size：要读写的字节数。</p>
+<p>count：要进行读写多少个size字节的数据项。</p>
+<p>fp：文件型指针。</p>
+<p>如果文件以二进制形式打开，用fread和fwrite函数就可以读写任何类型的信息，例如：</p>
+
+```c
+fread(f, 4, 2, fp);
+```
+
+<p>其中f是一个实型数组名。一个实型变量占4个字节。这个函数从fp所指向的文件读入2个四个字节的数据，存储到数组f中。</p>
+<p>如果有一个如下的结构体类型：</p>
+
+```c
+struct student_type
+{
+  char name[10];//姓名
+  int num;//学号
+  int age;//年龄
+  char addr[30];//地址
+}stud[40];
+```
+
+<p>结构体数据stud有40个元素，每一个元素用来存放一个学生的数据。假设学生的数据已经存放在磁盘文件中，可以用下面的for语句和fread函数读入40个学生的数据。</p>
+
+```c
+for(i=0;i<40;i++)
+  fread(&stud[i],sizeof(struct student_type),1,fp);
+```
+
+<p>同样，以下for语句可fwrite函数可以将内存中的学生数据输出到磁盘文件中去：</p>
+
+```c
+for(i=0;i<40;i++)
+  fwrite(&stud[i],sizeof(struct student_type),1,fp);
+```
+
+<p>如果fread或fwrite函数调用成功，则函数返回值为count的值，即输入或输出数据项的完整个数。</p>
+<p>下面写出一个完整的程序。</p>
+<p>例 13.3 从键盘输入4个学生的有关数据，然后把它们转存到磁盘文件上去。</p>
+
+```c
+# include <stdio.h>
+# define SIZE 4
+
+struct student_type
+{
+  char name[10];//姓名
+  int num;//学号
+  int age;//年龄
+  char addr[15];//地址
+}stud[SIZE];
+
+void save()
+{
+  FILE *fp;
+  int i;
+  
+  if((fp=fopen("stu_list", "wb"))==NULL)
+  {
+    printf("can not open file\n");
+    return;
+  }
+  
+  for(i=0; i<SIZE; i++)
+    if(fwrite(&stud[i], sizeof(struct student_type), 1, fp)!=1)
+      printf("file write error\n");
+  
+  fclose(fp);
+}
+
+void main()
+{
+  int i;
+  for(i=0; i<SIZE; i++)
+    scanf("%s%d%d%s", stud[i].name, &stud[i].num, &stud[i].age, stud[i].addr);
+    
+  save();
+}
+```
+
+<p>运行时，输入4个学生的姓名、学号、年龄和地址：</p>
+
+```
+Zhang 1001 19 room_101
+Fun 1002 20 room_102
+Tang 1003 21 room_103
+Ling 1004 21 room_104
+```
+
+<p>程序运行时，屏幕上并无输出任何信息，只是将从键盘输入的数据送到磁盘文件上。为了验证在磁盘文件"stu_list"中是否已存在此数据，下面程序从"stu_list"中读入数据，然后在屏幕上输出。</p>
+
+```c
+# include <stdio.h>
+# define SIZE 4
+
+struct student_type
+{
+  char name[10];//姓名
+  int num;//学号
+  int age;//年龄
+  char addr[15];//地址
+}stud[SIZE];
+
+void main()
+{
+  int i;
+  FILE *fp;
+  for(i=0; i<SIZE; i++) {
+    fread(&stud[i], sizeof(struct student_type), 1, fp);
+    printf("%-10s %4d %4d %-15s\n", stud[i].name, stud[i].num, stud[i].age, stud[i].addr);
+  }
+  fclose(fp);
+}
+
+```
+
+<p>请注意输入输出数据的情况。从键盘输入4个学生的数据是ASCII码，也就是文本文件。在送到计算机内存时，回车和换行符转换成一个换行符。再从内存以"wb"方式(二进制写)输出到"stu_list"文件，此时不发生字符转换，按内存中存储形式原样输出到磁盘文件上。在上面的验证程序中，又用fread函数从"stu_list"文件向内存读入数据，注意此时用的是"rb"方式，即二进制方式，数据按原样输入，也不发生字符转换。也就是这时候内存中的数据恢复到第一个程序向"stu_list"输出以前的情况。最后在验证程序中，用printf函数输出到屏幕，printf是格式输出函数，输出ASCII码，在屏幕上显示字符。换行符又转换为回车加换行符。</p>
+<p>如果企图从"stu_list"文件中以"r"方式读入数据就会出错。</p>
+<p>fread和fwrite函数一般用于二进制文件的输入输出。因为它们是按照数据块的长度来处理输入输出的，在字符时发生转换的情况下很可能出现与原设想的情况不同。</p>
+<p>例如，如果写：</p>
+
+```c
+  fread(&stud[i], sizeof(struct student_type), 1, stdin);
+```
+
+<p>企图从终端键盘输入数据，这在语法上并不存在错误，编译能通过。如果用以下形式输入数据：</p>
+
+```
+Zhang 1001 10 room_101
+...
+```
+
+<p>由于fread函数要求一次输入29个字节(而不问这些字节的内容)，因此输入数据中的空格也作为输入数据而不作为数据间的分隔符了。连空格也存储到了stud[i]中了，显然是不对的。</p>
+<p>这个题目要求的是从键盘输入数据，如果已有的数据已经以二进制形式存储在一个磁盘文件"stu_dat"中，要求从其中读入数据并输出到"stu_list"文件中，可以编写一个load函数，从磁盘文件中读二进制数据。</p>
+
+```c
+void load()
+{
+  FILE *fp;
+  int i;
+  if((fp=fopen("stu_dat", "rb"))==NULL)
+  {
+    printf("cannot open infile\n");
+    return;
+  }
+  for(i=0; i<SIZE; i++)
+    if(fread(&stu[i], sizeof(struct student_type), 1, fp)!=1)
+    {
+      if(feof(fp)) 
+      {
+        fclose(fp);
+        return;
+      }
+      printf("file read error\n");
+    }
+  flose(fp);
+}
+```
+
+<p>将load函数加到本地原来的程序文件中，并将main函数改为</p>
+
+```c
+main()
+{
+  load();
+  save();
+}
+```
+
+<p>即可实现题目要求。</p>
 
 ### 13.4.3 fprintf 函数和 fscanf 函数
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>fprintf函数、fscanf函数与printf函数、scanf函数作用相仿，都是格式化读写函数。只有一点不用：fprintf和fscanf函数的读写对象不是终端而是磁盘文件。他们的一般调用方式为：</p>
+
+```c
+fprintf(文件指针, 格式字符串, 输出列表);
+fscanf(文件指针, 格式字符串, 输入列表);
+```
+
+<p>例如：</p>
+
+```c
+fprintf(fp, "%d,%6.2f", i, t);
+```
+
+<p>它的作用是将整型变量i和实型变量t的值按%d和%6.2f的格式输出到fp指向的文件上。如果i=3，t=4.5，则输出到磁盘文件上的是以下的字符串：</p>
+
+```c
+3, 4.50
+```
+
+<p>同样，用以下的fscanf函数可以从磁盘文件上读入ASCII字符：</p>
+
+```c
+fscanf(fp, "%d,%f", &i, &t);
+```
+
+<p>磁盘文件上如果有以下字符：</p>
+
+```c
+3, 4.5
+```
+
+<p>则将磁盘文件中的数据3送给变量i，4.5送给变量t。</p>
+<p>用fprintf和fscanf函数对磁盘文件读写，使用方便，容易理解，但由于在输入时要将ASCII码转换为二进制形式，在输出时又要将二进制形式转换成字符，花费时间比较多。因此，在内存与磁盘频繁交换数据的情况下，最好不用fprintf和fscanf函数，而用fread和fwrite函数。</p>
 
 ### 13.4.4 其他读写函数
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-
 #### 13.4.4.1 putw 和 getw 函数
 
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <p></p>
 <p></p>
 <p></p>
