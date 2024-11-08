@@ -691,65 +691,76 @@ fseek(文件指针, 位移量, 起始点);
 <tr><td>文件末尾</td><td>SEEK_END</td><td>2</td></tr>
 </table>
 
-<p>“位移量”</p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>“位移量”指以“起始点”为基点，向前移动的字节数。ANSI C和大多数C版本要求位移量是long型数据。这样当文件的长度大于64KB时不致出问题。ANSI C标准规定在数字的末尾加上一个字母L，就表示是L型。</p>
+<p>fseek函数一般用于二进制文件，因为文本文件要发生字符转换，计算位置时往往会发生混乱。</p>
+<p>下面是fseek函数调用的几个例子：</p>
+
+```c
+fseek(fp, 100L, 0);//将位置指针移到离文件头100个字节处
+fseek(fp, 50L, 1);//将位置指针移到离当前位置50个字节处
+fseek(fp, -10L, 2);//将位置指针从文件末尾处向后退10个字节
+```
+
+<p>利用fseek函数就可以实现随机读写了。</p>
+<p>例 13.5 在磁盘文件上存有10个学生的数据。要求将第1、3、5、7、9个学生数据输入计算机，并在屏幕上显示出来。</p>
+<p>程序如下：</p>
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+struct student_type
+{
+  char name[10];
+  int num;
+  int age;
+  char sex;
+}stud[10];
+
+void main()
+{
+  int i;
+  FILE *fp;
+  if((fp=fopen("stud_dat", "rb"))==NULL)
+  {
+    printf("can not open file\n");
+    exit(0);
+  }
+  for(i=0; i<10; i+=2;)
+  {
+    fseek(fp, i*sizeof(struct student_type), 0);
+    fread(&stud[i], sizeof(struct student_type), 1, fp);
+    printf("%s %d %d %c\n", stud[i].name, stud[i].num, stud[i].age, stud[i].sex);
+  }
+  fclose(fp);
+}
+```
 
 ### 13.5.3 ftell 函数
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>ftell函数的作用是得到流式文件中的当前位置，用相对于文件开头的位移量来表示。由于we年中的位置指针经常移动，人们往往不容易知道其当前位置。用ftell函数可以得到当前位置。如果ftell函数返回值为-1L，表示出错。例如：</p>
+
+```c
+i=ftell(fp);
+if(i==-1L)printf("error\n");
+```
+
+<p>变量 i 存放当前位置，如调用函数时出错(如不存在fp文件)，则输出“error”。</p>
 
 ## 13.6 出错的检查
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>C标准提供一些函数用来检查输入输出函数调用中的错误。</p>
 
 ### 13.6.1 ferror 函数
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>在调用各种输入输出函数(如putc、getc、fread、fwrite等)时，如果出现错误，除了函数返回值有所反映外，还可以用ferror函数检查。它的一般调用形式为</p>
+
+```c
+ferror(fp);
+```
+
+<p>如果ferror返回值为0(假)，表示未出错；如果返回一个非零值，表示出错。应该注意，对同一个文件每一次调用输入输出函数，均产生一个新的ferror函数值，因此，应当在调用一个输入输出函数后立即检查ferror函数的值，否则信息会丢失。</p>
+<p>在执行fopen函数时，ferror函数的初始值自动置为0。</p>
 
 ### 13.6.2 clearerr 函数
 
@@ -770,4 +781,26 @@ fseek(文件指针, 位移量, 起始点);
 <p></p>
 <p></p>
 <p></p>
-
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
