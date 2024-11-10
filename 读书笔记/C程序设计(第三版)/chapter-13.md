@@ -764,43 +764,34 @@ ferror(fp);
 
 ### 13.6.2 clearerr 函数
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>clearerr的作用是使文件错误标志和文件结束标志置为0。假设在调用一个输入输出函数时出现错误，ferror函数值为一个非零值。在调用clearerr(fp)后，ferror(fp)的值变成0。</p>
+<p>只要出现错误标志，就一直保留，直到对同一文件调用clearerr函数或rewind函数，或任何其他一个输入输出函数。</p>
 
 ## 13.7 文件输入输出小结
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>在本节中将以上介绍过的输入输出函数作一概括性的小结，以一目了然，便于查阅。表13-3列出常用的缓冲文件系统函数。</p>
+<p>表 13-3 常用的缓冲文件系统函数</p>
+
+<table>
+<tr><td>分类</td><td>函数名</td><td>功能</td></tr>
+<tr><td>打开文件</td><td>fopen()</td><td>打开文件</td></tr>
+<tr><td>关闭文件</td><td>fclose()</td><td>关闭文件</td></tr>
+<tr><td rowspan=3>文件定位</td><td>fseek()</td><td>改变文件位置指针的位置</td></tr>
+<tr><td>rewind()</td><td>使文件位置指针重新置于文件开头</td></tr>
+<tr><td>ftell()</td><td>返回文件位置指针的当前值</td></tr>
+<tr><td rowspan=10>文件读写</td><td>fgetc(),getc()</td><td>从指定文件取得一个字符</td></tr>
+<tr><td>fputc(),putc()</td><td>把字符输出到指定文件</td></tr>
+<tr><td>fgets()</td><td>从指定文件读取字符串</td></tr>
+<tr><td>fputs()</td><td>把字符串输出到指定文件</td></tr>
+<tr><td>getw()</td><td>从指定文件读取一个字(int型)</td></tr>
+<tr><td>putw()</td><td>把一个字(int型)输出到指定文件</td></tr>
+<tr><td>fread()</td><td>从指定文件中读取数据项</td></tr>
+<tr><td>fwrite()</td><td>把数据项写到指定文件</td></tr>
+<tr><td>fscanf()</td><td>从指定文件按格式输入数据</td></tr>
+<tr><td>fprintf()</td><td>按指定格式将数据写到指定文件中</td></tr>
+<tr><td rowspan=3>文件状态</td><td>feof()</td><td>若到文件末尾，函数值为“真”(非0)</td></tr>
+<tr><td>ferror()</td><td>若对文件操作出错，函数值为“真”(非0)</td></tr>
+<tr><td>clearerr()</td><td>使ferror和feof函数值置零</td></tr>
+</table>
+
+<p>文件这一章的内容是很重要的，许多可供实际使用的C程序都包含文件处理。本章只介绍一些最基本的概念，由于篇幅所限，不可能举复杂的例子。希望读者在实践中掌握文件的使用。</p>
