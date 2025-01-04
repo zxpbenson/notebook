@@ -166,6 +166,7 @@ derive
 derived
 descent
 detect
+deterministic [dɪˌtɜːrmɪˈnɪstɪk] adj. (思想、解释等)基于决定论的;(力量、因素)不可抗拒的，不可逆转的;
 diagnose
 diagnostic
 dimensional
@@ -247,6 +248,7 @@ feed
 feeds
 filtering
 fine
+finite adj. 有限的;限定的;有限制的; n. 有限(性);有限物;
 flavor
 fluence
 fluency
@@ -587,3 +589,6 @@ vocabulary
 volume
 variadic
 watermelon n. 西瓜
+
+
+
