@@ -846,7 +846,25 @@ c = 5;
 
 ### 3.8.1 C语言运算符简介
 
-<p></p>
+<p>C的运算符</p>
+
+<table>
+<tr><td>算术运算符</td><td><pre>+ - * / %</pre></td></tr>
+<tr><td>关系运算符</td><td><pre>> < == >= <= !=</pre></td></tr>
+<tr><td>逻辑运算符</td><td><pre>! && ||</pre></td></tr>
+<tr><td>位运算符</td><td><pre><< >> ~ | ^ &</pre></td></tr>
+<tr><td>赋值运算符</td><td><pre>=及其扩展赋值运算符</pre></td></tr>
+<tr><td>条件运算符</td><td><pre>?:</pre></td></tr>
+<tr><td>逗号运算符</td><td><pre>,</pre></td></tr>
+<tr><td>指针运算符</td><td><pre>* &</pre></td></tr>
+<tr><td>求字节数运算符</td><td><pre>sizeof</pre></td></tr>
+<tr><td>强制类型转换运算符</td><td><pre>(类型)</pre></td></tr>
+<tr><td>分量运算符</td><td><pre>. -></pre></td></tr>
+<tr><td>下标运算符</td><td><pre>[]</pre></td></tr>
+<tr><td>其他运算符</td><td><pre>如函数调用运算符()</pre></td></tr>
+</table>
+
+
 <p></p>
 <p></p>
 <p></p>
