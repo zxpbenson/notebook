@@ -14,43 +14,44 @@ pron：代词（Pronoun）
 num：数词（Numeral）
 int：感叹词（Interjection）
 
-abbreviated adj. 简短的,缩短的
+abbreviated v. 把(词语、名称)缩写(成…);缩略; adj. 简短的；小型的；服装超短的;
+abbreviate vt. 缩写；把(词语、名称)缩写(成…)；缩略; 第三人称单数：abbreviates现在进行时：abbreviating过去式：abbreviated过去分词：abbreviated派生词：abbreviated adj.
 abbreviation n. 缩略,缩写;简称
 accumulase n. 聚积酶;
-accumulate v. 积累;积聚;积攒 to collect a large number of things over a long period of time
-accumulated
-accumulates
-accumulating
-accumulation
-accumulative
+accumulate v. 积累;积聚;积攒; to collect a large number of things over a long period of time; (数量)逐渐增加；(数额)逐渐增长 v. 积聚 第三人称单数：accumulates 现在进行时：accumulating 过去式：accumulated 过去分词：accumulated 派生词：accumulation n.
+accumulated v. 积累；积聚；(数量)逐渐增加；(数额)逐渐增长; adj. 累计的;
+accumulates v. 积累；积聚；(数量)逐渐增加；(数额)逐渐增长
+accumulating v. 积累；积聚；(数量)逐渐增加；(数额)逐渐增长; n. [数]累加; accumulate 的现在分词
+accumulation n. 积累；积聚；堆积；堆积物；聚积物; 复数：accumulations
+accumulative adj. 累积的
 accumulator n. 蓄电池;累加器 a battery that collects and stores electricity
-accuracy
-achieve
-acknowledge
-acknowledgement
-acquire
-adaptive
-advanced
-advantage
-aggregation
-agnostic
-algorithm
-aliasing
-alphabet
-alphabetic
-alphabetical
-alphabetically
-alphabetism
-alternating
-alternative
-ambari
-ambiguous
-analysis
-annoyingly
-approach
+accuracy n. 准确(性)；精确(程度)
+achieve v. 实现；(凭长期努力)达到(某目标、地位、标准)；完成；成功
+acknowledge vt. 承认(权威、地位)；（公开）感谢；（微笑、挥手等）致意；告知收悉; n. 知识 第三人称单数：acknowledges 现在进行时：acknowledging 过去式：acknowledged 过去分词：acknowledged
+acknowledgement n. 确认；(对事实、现实、存在的)承认；感谢；致谢，鸣谢；收件复函；谢礼; 复数：acknowledgements
+acquire vt. (通过努力、能力、行为表现)获得；得到；购得; 第三人称单数：acquires 现在进行时：acquiring 过去式：acquired 过去分词：acquired
+adaptive adj. 适应的；有适应能力的
+advance n. 进展；（价格、价值的）上涨，提高；(尤指武装部队的)前进，行进；进步；预付款；勾引; v. (知识、技术等)发展，进步；提前；(为了进攻、威胁等)前进，行进；提出；促进；推动；预付；上涨；向前推（至下一步）; adj. 预先的；事先的；先遣队；先头部队; 复数：advances第三人称单数：advances 现在进行时：advancing 过去式：advanced 过去分词：advanced
+advanced adj. 先进的；高级的；(发展)晚期的，后期的；高等的 v. (知识、技术等)发展，进步；(为了进攻、威胁等)前进，行进；促进；推动; advance的过去分词和过去式
+advantage n. 优势；优点；有利条件；有利因素；(局末平分后)占先；优势分; vt. 有利于；有助于；使处于有利地位; 复数：advantages 第三人称单数：advantages 现在进行时：advantaging 过去式：advantaged 过去分词：advantaged
+aggregation n. 聚合；总量；集合体；聚合作用；凝聚；聚集作用; 复数：aggregations
+agnostic n. 不可知论者(认为上帝存在与否是不可知的); adj. 不可知论（者）的; 复数：agnostics 派生词：agnostic adj. agnosticism n.
+algorithm n. 算法；计算程序; 复数：algorithms
+aliasing n. 混叠；别名使用；混淆现象; 
+alphabet n. 字母表；(一种语言的)全部字母; 复数：alphabets
+alphabetic adj. (属于)字母的
+alphabetical adj. 按字母顺序排列的；按字母(表)顺序的
+alphabetically adv. 按字母顺序；按字母（表）顺序地
+alternate n. 候补；代理人；代替者; v. (使)交替；(使)轮流; adj. 交替的；间隔的；轮流的；每隔(…天等)的; 第三人称单数：alternates 现在进行时：alternating 过去式：alternated 过去分词：alternated 派生词：alternately adv. alternation n.
+alternating v. 使交替；交替；使轮流；轮流; adj. 交替的；交互的; alternate的现在分词
+alternative adj. 可供替代的；非传统的；另类的; n. 可供选择的事物; 复数：alternatives
+ambari 洋葱
+ambiguous adj. 模棱两可的；不明确的；含混不清的
+analysis n. (对物质的)分析；(对事物的)分析结果; 复数：analyses
+approach 英/əˈprəʊtʃ/ 美/əˈproʊtʃ/ n. 方法；(待人接物或思考问题的)方式；(距离和时间上的)接近；要求；建议；进场；接洽；通路；相似（或近似）的事物; v. (在数额、水平或质量上)接近；要求；建议；(在距离或时间上)靠近；接洽；着手处理; 复数：approaches 第三人称单数：approaches 现在进行时：approaching 过去式：approached 过去分词：approached
 approached
 approaching
-appropriate
+appropriate 英/əˈprəʊpriət , əˈprəʊprieɪt/ 美/əˈproʊpriət , əˈproʊprieɪt/ adj. 适当的；合适的；恰当的; vt. 拨(专款等)；挪用；占用；盗用；侵吞; 第三人称单数：appropriates 现在进行时：appropriating 过去式：appropriated 过去分词：appropriated 派生词：appropriately adv. appropriateness n.
 approval
 approve
 approved
@@ -59,6 +60,7 @@ architecture
 archive
 assignable
 assignment
+assistant
 assume
 asymmetric
 atomicity
@@ -288,6 +290,7 @@ graine
 grained
 grape
 guarantee
+hallucination n. 幻觉;幻视，幻听(尤指生病或毒品所致);幻象;幻视(或幻听)到的东西; High temperatures can cause hallucination. 高烧可使人产生幻觉。
 hierarchical
 hippophae
 hyper
@@ -368,7 +371,8 @@ logarithm
 logistic
 magnitude
 maintenance
-mango
+mango 英/ˈmæŋɡəʊ/ 美/ˈmæŋɡoʊ/ n. 芒果; 复数：mangos
+manner 英/ˈmænə(r)/ 美/ˈmænər/ n. 方式；方法；态度；举止；礼貌；礼仪；规矩; 复数：manners
 materia
 material
 materialise
@@ -498,7 +502,7 @@ retrieved
 retriever
 retrieving
 roaring
-sampling
+sampling n. 取样；抽样；(乐曲的)节录，选录; v. 采样；取样；抽样检验；品尝；尝试；体验；尝；节录，选录(一段音乐或声音，用于新的乐曲中); sample的现在分词
 sandglass
 satisfaction
 satisfactory
@@ -530,7 +534,9 @@ sophisticated
 sophisticates
 sophisticator
 sparse
-specific
+specific adj. 具体的;特定的;明确的;特有的;独特的; n. 特性;细节;特效药;显著的性质;
+specifically adv. 具体地;具体来说;明确地;确切地说;特意;专门地;
+specification n. 规格;规范;说明书;明细单;
 spot
 spread
 square
@@ -556,7 +562,7 @@ supervised
 supervisor
 susceptible
 symmetric
-tale
+tale 英/teɪl/ 美/teɪl/ n. (尤指充满惊险的)故事；(精彩但不一定完全真实的)讲述，叙述；历险记; 复数：tales
 tales
 tempora
 temporal
