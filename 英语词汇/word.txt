@@ -534,6 +534,7 @@ sophisticated
 sophisticates
 sophisticator
 sparse
+speech 英/spiːtʃ/ 美/spiːtʃ/ n. 演讲；讲话；发言；演说；口语；（戏剧中的）台词；说话方式；说话的能力; 复数：speeches
 specific adj. 具体的;特定的;明确的;特有的;独特的; n. 特性;细节;特效药;显著的性质;
 specifically adv. 具体地;具体来说;明确地;确切地说;特意;专门地;
 specification n. 规格;规范;说明书;明细单;
