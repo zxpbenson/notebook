@@ -178,6 +178,7 @@ direction
 discourage
 discouraged
 discover
+distill 英/dɪˈstɪl/ 美/dɪˈstɪl/ v. 蒸馏；提取；滴下
 distribute
 distributed
 dolphin
