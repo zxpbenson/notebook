@@ -170,6 +170,7 @@ detect
 deterministic [dɪˌtɜːrmɪˈnɪstɪk] adj. (思想、解释等)基于决定论的;(力量、因素)不可抗拒的，不可逆转的;
 diagnose
 diagnostic
+diffusion 英/dɪˈfjuːʒən/ 美/dɪˈfjuʒən/ n. 扩散；漫射；传播
 dimensional
 dimensionality
 dinosaur
