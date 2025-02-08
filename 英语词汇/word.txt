@@ -179,6 +179,7 @@ discourage
 discouraged
 discover
 distill 英/dɪˈstɪl/ 美/dɪˈstɪl/ v. 蒸馏；提取；滴下
+distillation 英/dɪstɪˈleɪʃn/ 美/dɪstɪˈleɪʃn/ n. 蒸馏；蒸馏法
 distribute
 distributed
 dolphin
@@ -193,6 +194,8 @@ effectively
 efficiency
 elapse
 elastic
+embed 英/ɪmˈbed/ 美/ɪmˈbed/ v. 把…嵌入(或放入、埋入、插入)；<语> 嵌进；(制备镜检样片时的)灌封；扎牢；使深留脑中；把(花等)栽入土中; n. <美>(军队等中的)随行记者; 第三人称单数：embeds 现在进行时：embedding 过去式：embedded 过去分词：embedded
+embedding 英/ɪmˈbedɪŋ/ 美/ɪmˈbedɪŋ/ v. 把…牢牢地嵌入(或插入、埋入)；派遣(战地记者、摄影记者等)；嵌入(在I'm aware that she knows句中，she knows为内嵌句); n. 记者随军; embed的现在分词
 emit
 emitter
 emitting
@@ -292,8 +295,10 @@ grained
 grape
 guarantee
 hallucination n. 幻觉;幻视，幻听(尤指生病或毒品所致);幻象;幻视(或幻听)到的东西; High temperatures can cause hallucination. 高烧可使人产生幻觉。
-hierarchical
+hierarchical 英/ˌhaɪəˈrɑːkɪkl/ 美/ˌhaɪəˈrɑːrkɪkl/ adj. 等级制的；等级制度的；按等级划分的
+hierarchy 英/ˈhaɪərɑːki/ 美/ˈhaɪərɑːrki/ n. 等级制度(尤指社会或组织)；统治集团；层次体系; 复数：hierarchies
 hippophae
+hybrid 英/ˈhaɪbrɪd/ 美/ˈhaɪbrɪd/ adj. 混合的；杂种的; n. 杂种；(不同事物的)混合物，合成物；杂交植物；杂种动物; 复数：hybrids 派生词：hybrid adj.
 hyper
 hypertension
 hypertext
@@ -582,21 +587,29 @@ traditional
 trailing
 trait
 transformation
-tunnel
-unified
-uniform
-usage
-various
-varying
-violate
-violated
-violating
-violation
-vitae
-vocabulary
-volume
-variadic
-watermelon n. 西瓜
+tunnel 英/ˈtʌnl/ 美/ˈtʌnl/ n. 隧道；地道；地下通道；(动物的)洞穴通道; v. 开凿隧道；挖地道; 复数：tunnels 第三人称单数：tunnels 现在进行时：tunnelling 过去式：tunnelled 过去分词：tunnelled
+unified 英/ˈjuːnɪfaɪd/ 美/ˈjuːnɪfaɪd/ v. 统一；使一元化；使成一体; adj. 一致的，统一的；联合的，一体的; unify的过去分词和过去式
+unify 英/ˈjuːnɪfaɪ/ 美/ˈjuːnɪfaɪ/ vt. 统一；使一元化；使成一体; 第三人称单数：unifies 现在进行时：unifying 过去式：unified 过去分词：unified 派生词：unification n.
+uniform 英/ˈjuːnɪfɔːm/ 美/ˈjuːnɪfɔːrm/ n. 制服；校服; adj. 一致的；统一的；一律的; v. 使均一；使穿制服; 复数：uniforms 派生词：uniformity n. uniformly adv.
+usage 英/ˈjuːsɪdʒ/ 美/ˈjuːsɪdʒ/ n. 使用；(词语的)用法，惯用法；利用；利用率; 复数：usages
+variable 英/ˈveəriəbl/ 美/ˈveriəbl/ n. 变量；可变因素；可变情况; adj. 可变的；多变的；易变的；变化无常的；可更改的; 复数：variables 派生词：variably adv.
+variability 英/ˌveəriəˈbɪləti/ 美/ˌveriəˈbɪləti/ n. 可变性；易变性；反复不定
+variance 英/ˈveəriəns/ 美/ˈveriəns/ n. 方差；差额；变化幅度 复数：variances
+variant 英/ˈveəriənt/ 美/ˈveriənt/ n. 变种；变体；变形; adj. 变异的；不同的，相异的，不一致的；多样的；易变的，不定的; 复数：variants
+variation 英/ˌveəriˈeɪʃn/ 美/ˌveriˈeɪʃn/ n. (数量、水平等的)变化；变异；变更；变体；变种；变奏曲；变奏；变异的东西; 复数：variations
+variational 英/ˌveərɪˈeɪʃən(ə)l/ 美/ˌvɛriˈeɪʃən(ə)l/ adj. 变分的；变化的，变化性的，变更的
+various 英/ˈveəriəs/ 美/ˈveriəs/ adj. 各种各样的，不同的；各个的，各别的；不止一个的，许多的；<古>变化的，易变的；多方面的；杂色的，彩色的；多姿多彩的，多才多艺的；具有多种特征的; pron. <口>各位，各个；不止一个的，各别的
+variously 英/ˈveəriəsli/ 美/ˈveriəsli/ adv. 不同地；以各种方式
+varying 英/ˈveəriɪŋ/ 美/ˈveriɪŋ/ adj. 不同的，易变的; v.（大小、形状等）相异；（根据情况）变化；（使）多样化；偏离；（成比例）变化；变异（vary 的现在分词）
+violate 英/ˈvaɪəleɪt/ 美/ˈvaɪəleɪt/ vt. 违反；侵犯(隐私等)；违背(法律、协议等)；违犯；强奸；亵渎；污损(神圣之地)；搅扰；使人不得安宁; 第三人称单数：violates 现在进行时：violating 过去式：violated 过去分词：violated 派生词：violation n. violator n.
+violated 英/ˈvaɪəleɪtɪd/ 美/ˈvaɪəleɪtɪd/ v. 违反，违犯，违背(法律、协议等)；侵犯(隐私等)；亵渎，污损(神圣之地)；搅扰；使人不得安宁; violate的过去分词和过去式
+violating 英/ˈvaɪəleɪtɪŋ/ 美/ˈvaɪəleɪtɪŋ/ v. 违反，违犯，违背(法律、协议等)；侵犯(隐私等)；亵渎，污损(神圣之地)；搅扰；使人不得安宁; violate的现在分词
+violation 英/ˌvaɪə'leɪʃ(ə)n/ 美/ˌvaɪə'leɪʃ(ə)n/ n. 违反；侵犯；违法；破坏；违章；违例；犯规；越轨; 复数：violations
+vitae 英/ˈviːtaɪ/ 美/ˈviːtaɪ/ n. 生命（存、活）; vita的复数
+vocabulary 英/vəˈkæbjələri/ 美/vəˈkæbjəleri/ n. (某学科中所使用的或某一语言的)词汇；(某人掌握或使用的)词汇量；词汇表; 复数：vocabularies
+volatile 英/ˈvɒlətaɪl/ 美/ˈvɑːlətl/ adj. 不稳定的；<计>易失的；易挥发的，易发散的；爆发性的，爆炸性的；易变的，无定性的，无常性的；短暂的，片刻的；活泼的，轻快的，无忧虑的；暴躁的；易引起的；易恶化的；可能急剧波动的；<古>迅速游移的; n. <罕>有翅动物；易挥发物
+volume 英/ˈvɒljuːm/ 美/ˈvɑːljuːm/ n. 体积；卷，合订本；容积，容量；量，额；音量，响度；大量，许多；书；（成套书籍中的）一卷，一册；最大音量；唱片；一套录音磁带; adj. 大量的; v. 把…收集成卷，把…装订成合订本；成团地喷出；（烟、蒸汽等）成团升起/卷起; 复数：volumes
+watermelon 英/ˈwɔːtəmelən/ 美/ˈwɔːtərmelən/ n. 西瓜
 
 
 
