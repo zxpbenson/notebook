@@ -348,13 +348,12 @@ instant 英/ˈɪnstənt/ 美/ˈɪnstənt/ n. 瞬息，顷刻，刹那；（某�
 insufficiency
 insufficient
 insufficiently
-integrate
-intend
-intended
-integrate
+integrate 英/ˈɪntɪɡreɪt/ 美/ˈɪntɪɡreɪt/ v. 整合；(使)合并，成为一体；(使)加入，融入群体; adj. 完全的
 integrated
 integrates
 integrating
+intend
+intended
 interact
 interference
 intergrating
@@ -374,7 +373,7 @@ leak
 least
 legacy
 linear
-literal
+literal 英/ˈlɪtərəl/ 美/ˈlɪtərəl/ adj. 字面意义的；缺乏想象力的；完全按原文的; n. 字面;
 logarithm
 logistic
 magnitude
@@ -410,6 +409,7 @@ motivation
 mulberry
 multicast
 mutex
+mutually 英/ˈmjuːtʃuəli/ 美/ˈmjuːtʃuəli/ adv. 相互地；彼此；共同地
 naive
 negative
 norm
@@ -454,6 +454,7 @@ positive
 potential
 preceding
 predecessor
+predicate 英/ˈpredɪkət , ˈpredɪkeɪt/ 美/ˈpredɪkət , ˈpredɪkeɪt/ n. 谓语(句子成分，对主语加以陈述，如John went home中的went home); vt. 断言；使基于；使以…为依据；表明；阐明; v. 使基于；断言；表明；使以…为依据; adj. 述语的；谓项的; 复数：predicates 第三人称单数：predicates 现在进行时：predicating 过去式：predicated 过去分词：predicated
 prediction
 predictive
 premium 英/ˈpriːmiəm/ 美/ˈpriːmiəm/ n. 保险费；额外费用；附加费; adj. 高昂的；优质的;
