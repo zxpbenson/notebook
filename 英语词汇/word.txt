@@ -47,6 +47,7 @@ alternating v. 使交替；交替；使轮流；轮流; adj. 交替的；交互�
 alternative adj. 可供替代的；非传统的；另类的; n. 可供选择的事物; 复数：alternatives
 ambari 洋葱
 ambiguous adj. 模棱两可的；不明确的；含混不清的
+amplification 英/ˌæmplɪfɪˈkeɪʃn/ 美/ˌæmplɪfɪˈkeɪʃn/ n. 放大；扩大（充）；膨胀
 analysis n. (对物质的)分析；(对事物的)分析结果; 复数：analyses
 approach 英/əˈprəʊtʃ/ 美/əˈproʊtʃ/ n. 方法；(待人接物或思考问题的)方式；(距离和时间上的)接近；要求；建议；进场；接洽；通路；相似（或近似）的事物; v. (在数额、水平或质量上)接近；要求；建议；(在距离或时间上)靠近；接洽；着手处理; 复数：approaches 第三人称单数：approaches 现在进行时：approaching 过去式：approached 过去分词：approached
 approached
@@ -411,7 +412,7 @@ multicast
 mutex
 mutually 英/ˈmjuːtʃuəli/ 美/ˈmjuːtʃuəli/ adv. 相互地；彼此；共同地
 naive
-negative
+negative 英/ˈneɡətɪv/ 美/ˈneɡətɪv/ adj. 负面的；消极的；负极的；否定的；有害的；坏的；结果为阴性的（或否定的）；缺乏热情的；含有否定词的; n. 否定；底片；负片；拒绝；否定词；属阴性(或否定)的结果; vt. 否定；拒绝；证伪；否定…的真实性; 复数：negatives; 第三人称单数：negatives; 现在进行时：negativing; 过去式：negatived; 过去分词：negatived; 派生词：negatively adv.
 norm
 normal
 normally
@@ -440,6 +441,7 @@ percentile
 performance
 periodic
 periods
+peripheral 英/pəˈrɪfərəl/ 美/pəˈrɪfərəl/ n. 外围设备；周边设备; adj. 外围的；周边的；次要的；附带的；与计算机相连的; 复数：peripherals 派生词：peripherally adv.
 persimmon
 persistence
 pessimistic
@@ -451,6 +453,7 @@ plethora
 pomace
 pomegranate
 positive
+positive 英/ˈpɒzətɪv/ 美/ˈpɑːzətɪv/ adj. 积极乐观的；完全的；良好的；正数的；建设性的；正电的；自信的；阳性的；拥护的；表示赞同的；有绝对把握；证据确凿的；朝着成功的; n. 优势；优点；阳性结果(或反应)；正片
 potential
 preceding
 predecessor
