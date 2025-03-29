@@ -1,0 +1,18 @@
+variable 英/ˈveəriəbl/ 美/ˈveriəbl/ n. 变量；可变因素；可变情况; adj. 可变的；多变的；易变的；变化无常的；可更改的; 复数：variables 派生词：variably adv.
+variability 英/ˌveəriəˈbɪləti/ 美/ˌveriəˈbɪləti/ n. 可变性；易变性；反复不定
+variance 英/ˈveəriəns/ 美/ˈveriəns/ n. 方差；差额；变化幅度 复数：variances
+variant 英/ˈveəriənt/ 美/ˈveriənt/ n. 变种；变体；变形; adj. 变异的；不同的，相异的，不一致的；多样的；易变的，不定的; 复数：variants
+variation 英/ˌveəriˈeɪʃn/ 美/ˌveriˈeɪʃn/ n. (数量、水平等的)变化；变异；变更；变体；变种；变奏曲；变奏；变异的东西; 复数：variations
+variational 英/ˌveərɪˈeɪʃən(ə)l/ 美/ˌvɛriˈeɪʃən(ə)l/ adj. 变分的；变化的，变化性的，变更的
+various 英/ˈveəriəs/ 美/ˈveriəs/ adj. 各种各样的，不同的；各个的，各别的；不止一个的，许多的；<古>变化的，易变的；多方面的；杂色的，彩色的；多姿多彩的，多才多艺的；具有多种特征的; pron. <口>各位，各个；不止一个的，各别的
+variously 英/ˈveəriəsli/ 美/ˈveriəsli/ adv. 不同地；以各种方式
+varying 英/ˈveəriɪŋ/ 美/ˈveriɪŋ/ adj. 不同的，易变的; v.（大小、形状等）相异；（根据情况）变化；（使）多样化；偏离；（成比例）变化；变异（vary 的现在分词）
+versatile 英/ˈvɜːsətaɪl/ 美/ˈvɜːrsətl/; adj. 多功能的；多才多艺的；多用途的；多面手的；有多种技能的
+violate 英/ˈvaɪəleɪt/ 美/ˈvaɪəleɪt/ vt. 违反；侵犯(隐私等)；违背(法律、协议等)；违犯；强奸；亵渎；污损(神圣之地)；搅扰；使人不得安宁; 第三人称单数：violates 现在进行时：violating 过去式：violated 过去分词：violated 派生词：violation n. violator n.
+violated 英/ˈvaɪəleɪtɪd/ 美/ˈvaɪəleɪtɪd/ v. 违反，违犯，违背(法律、协议等)；侵犯(隐私等)；亵渎，污损(神圣之地)；搅扰；使人不得安宁; violate的过去分词和过去式
+violating 英/ˈvaɪəleɪtɪŋ/ 美/ˈvaɪəleɪtɪŋ/ v. 违反，违犯，违背(法律、协议等)；侵犯(隐私等)；亵渎，污损(神圣之地)；搅扰；使人不得安宁; violate的现在分词
+violation 英/ˌvaɪə'leɪʃ(ə)n/ 美/ˌvaɪə'leɪʃ(ə)n/ n. 违反；侵犯；违法；破坏；违章；违例；犯规；越轨; 复数：violations
+vitae 英/ˈviːtaɪ/ 美/ˈviːtaɪ/ n. 生命（存、活）; vita的复数
+vocabulary 英/vəˈkæbjələri/ 美/vəˈkæbjəleri/ n. (某学科中所使用的或某一语言的)词汇；(某人掌握或使用的)词汇量；词汇表; 复数：vocabularies
+volatile 英/ˈvɒlətaɪl/ 美/ˈvɑːlətl/ adj. 不稳定的；<计>易失的；易挥发的，易发散的；爆发性的，爆炸性的；易变的，无定性的，无常性的；短暂的，片刻的；活泼的，轻快的，无忧虑的；暴躁的；易引起的；易恶化的；可能急剧波动的；<古>迅速游移的; n. <罕>有翅动物；易挥发物
+volume 英/ˈvɒljuːm/ 美/ˈvɑːljuːm/ n. 体积；卷，合订本；容积，容量；量，额；音量，响度；大量，许多；书；（成套书籍中的）一卷，一册；最大音量；唱片；一套录音磁带; adj. 大量的; v. 把…收集成卷，把…装订成合订本；成团地喷出；（烟、蒸汽等）成团升起/卷起; 复数：volumes

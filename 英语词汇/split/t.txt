@@ -1,0 +1,29 @@
+tale 英/teɪl/ 美/teɪl/ n. (尤指充满惊险的)故事；(精彩但不一定完全真实的)讲述，叙述；历险记; 复数：tales
+tales
+tempora
+temporal
+temporarily
+temporary
+terminology
+tertiary
+testing
+thrift 英/θrɪft/ 美/θrɪft/ n. 节俭；节约；海石竹(海边野生植物，花鲜艳，呈粉红色); 复数：thrifts
+throughput 英/ˈθruːpʊt/ 美/ˈθruːpʊt/ n. 吞吐量；(某一时期内的)生产量，接待人数
+tolerable 英/ˈtɒlərəbl/ 美/ˈtɑːlərəbl/ adj. 可接受的；可容忍的；还可以的；可忍受的；过得去的；尚好的
+tolerance 英/ˈtɒlərəns/ 美/ˈtɑːlərəns/ n. 容忍；公差；宽容；忍受；容限；耐量；耐力；宽恕；忍耐力；忍受性; 复数：tolerances
+tolerant 英/ˈtɒlərənt/ 美/ˈtɑːlərənt/ adj. 宽容的；容忍的；忍受的；能耐…的；能在困难条件下生存(或操作)的
+tolerate 英/ˈtɒləreɪt/ 美/ˈtɑːləreɪt/ vt. 容忍；容许，允许(不同意或不喜欢的事物)；忍受；包容；(对药物)有耐受性；能经受(困难条件); 第三人称单数：tolerates 现在进行时：tolerating 过去式：tolerated 过去分词：tolerated
+topic 英/ˈtɒpɪk/ 美/ˈtɑːpɪk/ n. （文章、讲演等的）话题，题目；（章节、段落等的）主题；<语>话题，主题；（提纲、大纲等的）标题；<逻>论题；—般规则，行为准则，格言; 复数：topics
+topology 英/tə'pɒlədʒɪ/ n. 拓扑结构；构相
+tradition 英/trəˈdɪʃn/ 美/trəˈdɪʃn/ n. 传统；传统的信仰(或风俗); 复数：traditions
+traditional 英/trəˈdɪʃənl/ 美/trəˈdɪʃənl/ adj. 传统的；习俗的；惯例的；守旧的；因袭的 比较级：more traditional 最高级：most traditional 派生词：traditionally adv.
+trail 英/treɪl/ 美/treɪl/ v. 跟踪；(在比赛或其他竞赛中)落后，失利，失败；追踪；(被)拖，拉；蔓生；(尤指跟在他人后面)疲惫地走，没精打采地慢走，磨蹭; n. (乡间的)小路，小径；（特定）路线，路径；(尤指打猎时跟踪的)踪迹，臭迹；(长串的)痕迹，踪迹，足迹; 复数：trails 第三人称单数：trails 现在进行时：trailing 过去式：trailed 过去分词：trailed
+trailing 英/ˈtreɪlɪŋ/ 美/ˈtreɪlɪŋ/ v. (在比赛或其他竞赛中)落后，失利，失败；(被)拖，拉；(尤指跟在他人后面)疲惫地走，没精打采地慢走，磨蹭; adj. （植物）蔓生的；后面的；拖尾的；牵引的；被拖动的；蔓延的; trail的现在分词
+trait 英/treɪt/ 美/treɪt/ n. 特质；(人的个性的)特征，特性，特点; 复数：traits
+tun 英/tʌn/ 美/tʌn/ n. 大酒桶；大啤酒桶; vt. 把酒装入大酒桶; 复数：tuns 第三人称单数：tuns 现在进行时：tunning 过去式：tunned 过去分词：tunned
+tune 英/tjuːn/ 美/tuːn/ n. 曲调；曲子; vt. (给收音机、电视等)调谐，调频道；调整，调节(发动机)；调整；(为乐器)调音，校音; 复数：tunes 第三人称单数：tunes 现在进行时：tuning 过去式：tuned 过去分词：tuned
+turbo 英/ˈtɜːbəʊ/ 美/ˈtɜrboʊ/ n. 涡轮增压器; 复数：turbos
+transform 英/trænsˈfɔːm/ 美/trænsˈfɔːrm/ vt. 使改变；使转换；使改观; n. 【数】变换式；【化】反式; 第三人称单数：transforms 现在进行时：transforming 过去式：transformed 过去分词：transformed
+transformation 英/ˌtrænsfəˈmeɪʃn/ 美/ˌtrænsfərˈmeɪʃn/ n. (彻底的)变化，改观，转变，改革；转型；(用于南非)民主改革; 复数：transformations 派生词：transformational adj.
+transformer 英/trænsˈfɔːmə(r)/ 美/trænsˈfɔːrmər/ n. 变压器; 复数：transformers
+tunnel 英/ˈtʌnl/ 美/ˈtʌnl/ n. 隧道；地道；地下通道；(动物的)洞穴通道; v. 开凿隧道；挖地道; 复数：tunnels 第三人称单数：tunnels 现在进行时：tunnelling 过去式：tunnelled 过去分词：tunnelled
