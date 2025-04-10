@@ -25,6 +25,13 @@ scenarios
 section
 semantic
 semantically
+
+sensor
+英/ˈsensə(r)/
+美/ˈsensər/
+n. 传感器；(探测光、热、压力等的)敏感元件；探测设备
+复数：sensors
+
 sentinel
 sequential
 sequentially

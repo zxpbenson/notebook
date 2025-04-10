@@ -42,10 +42,22 @@ instant 英/ˈɪnstənt/ 美/ˈɪnstənt/ n. 瞬息，顷刻，刹那；（某�
 insufficiency
 insufficient
 insufficiently
-integrate 英/ˈɪntɪɡreɪt/ 美/ˈɪntɪɡreɪt/ v. 整合；(使)合并，成为一体；(使)加入，融入群体; adj. 完全的
-integrated
-integrates
-integrating
+
+integrate
+英/ˈɪntɪɡreɪt/
+美/ˈɪntɪɡreɪt/
+v. 整合；(使)合并，成为一体；(使)加入，融入群体
+adj. 完全的
+第三人称单数：integrates
+现在进行时：integrating
+过去式：integrated
+过去分词：integrated
+
+integration
+英/ˌɪntɪˈɡreɪʃn/
+美/ˌɪntɪˈɡreɪʃn/
+n. 整合；一体化；结合；(不同肤色、种族、宗教信仰等的人的)混合，融合
+
 intend
 intended
 
@@ -68,8 +80,6 @@ n. 相互作用；相互影响（作用，制约，配合）；交互作用（�
 
 
 interference
-intergrating
-intergration
 isolate
 isolated
 isolating

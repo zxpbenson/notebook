@@ -103,3 +103,9 @@ cryptography
 curricula
 curricular
 curriculum
+
+cursor
+英/ˈkɜːsə(r)/
+美/ˈkɜːrsər/
+n. (计算机荧光屏上的)光标，游标
+复数：cursors

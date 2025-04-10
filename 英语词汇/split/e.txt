@@ -33,9 +33,19 @@ enforcement
 enforcing
 ensembles
 ensuring
+
 ephemera
+英/ɪˈfemərə/
+美/ɪˈfemərə/
+n. 只在短期内有用的事物
+复数：ephemeras
+
 ephemeral
-ephemerality
+英/ɪˈfemərəl/
+美/ɪˈfemərəl/
+adj. 短暂的；瞬息的
+n. 生命短暂的事物；短生植物
+
 estimate
 estimated
 evaluate
