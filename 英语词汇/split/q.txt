@@ -1,6 +1,0 @@
-quantifier
-
-quantile
-英/ˈkwɒntaɪl/
-美/ˈkwɑːntaɪl/
-n. 分位数
