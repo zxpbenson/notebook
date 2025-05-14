@@ -1297,41 +1297,35 @@ void main()
 There are 4 words in the line.
 </pre>
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>例 7-9 有三个字符串，要求找出其中最大者。</p>
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+void main()
+{
+  char string[20];
+  char str[3][20];
+  int i;
+  for(i=0;i<3;i==)
+    gets(str[i]);
+  if(strcmp(str[0], str[1])>0)
+    cstrcpy(string, str[0]);
+  else
+    cstrcpy(string, str[1]);
+  if(strcmp(str[2], string)>0)
+    strcpy(string, str[2]);
+  printf("\nthe largest string is:\n%s\n", string);
+}
+```
+
+<p>运行结果如下：</p>
+
+<pre>CHINA\n
+HOLLAND\n
+AMERICA\n
+
+the largest string is:
+HOLLAND
+</pre>
