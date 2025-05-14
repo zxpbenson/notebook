@@ -924,70 +924,387 @@ void main()
 
 <p>在C函数库中提供了一些用来处理字符串的函数，使用方便。几乎所有版本的C语言编译系统都提供这些函数。</p>
 <p>下面介绍几种常用的函数。</p>
+
 * 1，puts 函数
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+<p>其一般形式为</p>
+
+```c
+  puts(字符数组);
+```
+
+<p>其作用是将一个字符串(以'\0'结束的字符序列)输出到终端。举例：</p>
+
+```c
+  char str[] = {"China\n Bei jing"};
+  puts(str);
+```
+
+<p>输出：</p>
+
+<pre>China
+Bei jing
+</pre>
+
+<p>在输出时将字符结束标志 '\0' 替换为 '\n'，即输出完字符串后换行。</p>
+
 * 2，gets 函数
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+<p>其一般形式为</p>
+
+```c
+  gets(字符数组);
+```
+
+<p>其作用是从终端输入一个字符串到字符数组，并且得到一个函数值。该函数值是字符数组的起始地址。如执行下面的函数：</p>
+
+```c
+  gets(str);
+```
+<p>从键盘输入：</p>
+
+<pre>Computer\n</pre>
+
+<p>将输入的字符串 "Computer" 送给字符数组 str(注意，送给数组的共有9个字符，而不是8个)，函数值为字符数组 str 的起始地址。一般利用 gets 函数的目的是向字符数组输入一个字符串，而不大关心其函数值。</p>
+<p>注意：puts 和 gets 函数都只能有一个函数参数。</p>
+
 * 3，strcat 函数
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+<p>其一般形式为</p>
+
+```c
+  strcat(字符数组1,字符数组2);
+```
+
+<p>strcat是STRing CATenate(字符串连接)的缩写。其作用是连接两个字符数组中的字符串，把字符串2接到字符串1的后面，结果放在字符数组1中，函数调用后得到一个函数值，字符数组1的地址。例如：</p>
+
+```c
+  char str1[30] = {"People's Republic of "};
+  char str2[] = {"China"};
+  printf("%s", strcat(str1, str2));
+```
+
+<p>输出：</p>
+
+<pre>People's Republic of China</pre>
+
+<p>连接后的情况见图 7-15：</p>
+
+<table>
+<tr>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td>29</td>
+</tr>
+<tr>
+<td>str1：</td>
+<td>P</td>
+<td>e</td>
+<td>o</td>
+<td>p</td>
+<td>l</td>
+<td>e</td>
+<td>'</td>
+<td>s</td>
+<td> </td>
+<td>R</td>
+<td>e</td>
+<td>p</td>
+<td>u</td>
+<td>b</td>
+<td>l</td>
+<td>i</td>
+<td>c</td>
+<td> </td>
+<td>o</td>
+<td>f</td>
+<td> </td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+</tr>
+<tr>
+<td>str2：</td>
+<td>C</td>
+<td>h</td>
+<td>i</td>
+<td>n</td>
+<td>a</td>
+<td>\0</td>
+<td align=center colspan=24>-</td>
+</tr>
+<tr>
+<td>str3：</td>
+<td>P</td>
+<td>e</td>
+<td>o</td>
+<td>p</td>
+<td>l</td>
+<td>e</td>
+<td>'</td>
+<td>s</td>
+<td> </td>
+<td>R</td>
+<td>e</td>
+<td>p</td>
+<td>u</td>
+<td>b</td>
+<td>l</td>
+<td>i</td>
+<td>c</td>
+<td> </td>
+<td>o</td>
+<td>f</td>
+<td> </td>
+<td>C</td>
+<td>h</td>
+<td>i</td>
+<td>n</td>
+<td>a</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+</tr>
+</table>
+
+* 图 7-15
+
+<p>说明</p>
+<p>（1）字符数组1必须足够大，以便容纳连接后的新字符串。本利中定义str1的长度为30，是足够大的，如果在定义时改用：</p>
+
+```c
+  char str1[] = {"People's Republic of "};
+```
+
+<p>就会出问题，因为长度不够。</p>
+<p>（2）连接前两个字符串后面都有 '\0'，连接时将字符串1后面的 '\0' 取消，只在新串最后保留 '\0' 。</p>
+
 * 4，strcpy 和 strncpy 函数
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+<p>其一般形式为：</p>
+
+```c
+  strcpy(字符数组1, 字符串2);
+```
+
+<p>strcpy是STRingCoPY（字符串复制）的简写。它是字符串复制函数，作用是将字符串2复制到字符数组1中去。例如：</p>
+
+```c
+  char str1[10] = '';
+  char str2[] = {"China"};
+  strcpy(str1, str2);
+```
+
+<p>执行后，str1的状态如图 7-16所示。</p>
+
+<table>
+<tr>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>str1：</td>
+<td>C</td>
+<td>h</td>
+<td>i</td>
+<td>n</td>
+<td>a</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+<td>\0</td>
+</tr>
+</table>
+
+* 图 7-16
+
+<p>说明：</p>
+<p>（1）字符数组1必须定义的足够大，以便容纳被复制的字符串。字符数组1的长度不应小于字符串2的长度。</p>
+<p>（2）字符数组1必须写成数组名形式（str1），字符串2可以是字符数组名，也可以是一个字符串常量。例如：</p>
+
+
+```c
+  strcpy(str1, "China");
+```
+
+<p>作用与前面相同。</p>
+<p>（3）如果在复制前未对 str1 数组赋值，则 str1 各字节中的内容是无法预知的，复制时将str2中的字符串和其后的 '\0' 一起复制到是字符数组1中，取代字符数组1中的前面6个字符，最后4个字符并不一定是斜杠零，而是str1中原有的最后四个字节的内容。</p>
+<p>（4）不能用赋值语句将一个字符串常量或者字符数组直接给一个字符数组。如下面两行都是不合法的：</p>
+
+```c
+  str1 = "China";
+  str1 = str2;
+```
+
+<p>而只能用strcpy函数将一个字符串复制到另一个字符数组中去。用估值语句只能将一个字符赋给一个字符型变量或字符数组元素。如下面的语句是合法的：</p>
+
+```c
+  char a[5],c1,c2;
+  c1 = 'A'; 
+  c2 = 'B';
+  a[0] = 'C';
+  a[0] = 'h';
+  a[0] = 'i';
+  a[0] = 'n';
+  a[0] = 'a';
+```
+
+<p>（5）可以用 strncpy 函数将字符串 2 中前面 n 个字符复制到字符数组1 中去。例如：</p>
+
+```c
+  strncpy(str1, str2, 2);
+```
+
+<p>作用是将 str2 中最前面 2 各字复制到 str1 中，取代 str1 中原有的最前面 2 个字符。但复制的字符个数 n 不应多于 str1 中原有的字符(不包括 '\0')。</p>
+
 * 5，strcmp 函数
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+<p>其一般形式为</p>
+
+
+```c
+  strcmp(字符串1, 字符串2);
+```
+
+<p>strcmp 是 STRing CoMPare （字符串比较）的缩写。它的作用是比较字符串1和字符串2。例如：</p>
+
+```c
+  strcmp(str1, str2);
+  strcmp("China", "Korea");
+  strcmp(str1, "Bei jing");
+```
+
+<p>字符串比较的规则与其他语言中的规则相同，即对两个字符串自左至右逐个字符数相比(按ASCII码值大小比较)，直到出现不同的字符或遇到 '\0' 为止。如全部字符相同，则认为相等；若出现不相同的字符，则以第一个不相同的字符的比较结果为准。</p>
+<p>注意：</p>
+
+```c
+  if(str1, str2) // 这种比较方式是错误的
+    printf("yes");
+```
+
 * 6，strlen 函数
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+<p>其一般形式为：</p>
+
+```c
+  strlen(字符数组);
+```
+
+<p>strlen 是 STRingLENgth（字符串长度）的缩写。它是测试字符串长度的函数。函数的值为字符串中的实际长度（不包括 '\0' 在内）。例如：</p>
+
+```c
+  char str[10] = {"China"};
+  printf("%d", strlen(str));//注意：输出结果不是10，也不是6，而是5
+```
+
 * 7，strlwr 函数
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+<p>其一般形式为：</p>
+
+```c
+  strlwr(字符串);
+```
+
+<p>strlwr 是 STRing LoWeRcase （字符串小写）的缩写。寒素的作用是将字符串中大写字母换成小写字母。</p>
+
 * 8，strupr 函数
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+
+<p>其一般形式为：</p>
+
+```c
+  strupr(字符串);
+```
+
+<p>strupr 是 STRing UPpeRcase （字符串大写）的缩写。寒素的作用是将字符串中小写字母换成大写字母。</p>
+
+<p>以上介绍了常用的8种字符串处理函数，应当再次强调：库函数并非C语言本身的组成部分，而是C语言编译系统为方便用户使用而提供的公共函数。不同的编译系统提供的函数数量和函数名、函数功能都不尽相同，使用时要小心，必要时查一下库函数手册。当然，有一些基本的函数（包括函数名和函数功能），不同的系统所提供的是相同的，这就为程序的通用性提供了基础。</p>
 
 ### 7.3.7 字符数组应用举例
 
+<p>例 7.8 输入一行字符，统计其中有多少个单词，单词之间用空格分隔开。</p>
+<p>程序如下：</p>
+
+```c
+#include <stdio.h>
+
+void main()
+{
+  char string[81];
+  int i, num = 0,word = 0;
+  char c;
+  gets(string);
+  for(i=0; (c=string[i]) != '\0'; i++)
+  {
+    if(c == ' '){
+      word = 0;
+    } else if (word==0){
+      word = 1;
+      num++
+    }
+  }
+  printf("There are %d words in the line.\n", num);
+}
+```
+
+<p>运行情况如下：</p>
+
+<pre>I am a boy.
+There are 4 words in the line.
+</pre>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <p></p>
 <p></p>
 <p></p>
