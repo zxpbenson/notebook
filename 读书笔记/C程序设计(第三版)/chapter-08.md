@@ -1167,10 +1167,9 @@ void main()
     char str[80];
     enter_string(str);
     scanf("%c", &c);
-    delete_string(str);
+    delete_string(str, c);
     print_string(str);
 }
-
 ```
 
 <p><b>file2.c(文件2)</b></p>

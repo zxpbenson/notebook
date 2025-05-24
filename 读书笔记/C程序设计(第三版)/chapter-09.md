@@ -98,6 +98,8 @@ f1()
 
 <p>(7) 在进行宏定义时，可以引用已定义的宏名。</p>
 
+<p>例 9.2 在宏定义中引用已经定义的宏名</p>
+
 ```c
 #include <stdio.h>
 #define R 3.0
@@ -150,7 +152,7 @@ void main()
     float a, area;
     a = 3.6;
     area = S(a);
-    printf("r = %f\narea = %f\n", r, area);
+    printf("r = %f\narea = %f\n", a, area);
 }
 ```
 
@@ -215,7 +217,7 @@ void main()
 {
     float r, l, s, v;
     scanf("%f", &r);
-    CIRCLEE(r, l, s, v);
+    CIRCLE(r, l, s, v);
     printf("r = %6.2f, l = %6.2f, s = %6.2f, v = %6.2f\n", r, l, s, v);
 }
 ```
@@ -294,7 +296,6 @@ void main()
     PR(D4, a, b, c, d);
     PR(S, string);
 }
-
 ```
 
 ## 9.2 "文件包含"处理
@@ -342,7 +343,6 @@ void main()
     PR(D4, a, b, c, d);
     PR(S, string);
 }
-
 ```
 
 <p>在编译时并不是对两个文件分别进行编译，然后再将他们的目标程序连接的，而是经过编译预处理后将头文件format.h包含到主文件中，得到一个新的源程序，然后对这个文件进行编译，的二到哦一个目标(.obj)文件。</p>
