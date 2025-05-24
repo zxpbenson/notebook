@@ -51,7 +51,7 @@ void main()
   for(i = 0; i <= 9; i++)
     a[i] = i;
   for(i = 9; i >= 0; i--)
-    print("%d", a[i]);//9 8 7 6 5 4 3 2 1 0
+    printf("%d", a[i]);//9 8 7 6 5 4 3 2 1 0
   printf("\n");
 }
 ```
@@ -102,6 +102,7 @@ int a[10] = {1,2,3,4,5};
 
 ```c
 #include <stdio.h>
+
 void main()
 {
   int i;
@@ -110,10 +111,10 @@ void main()
     f[i]  = f[i-2] + f[i+1];
   for(i = 0; i < 20; i++)
   {
-    if(i%5 == 0)print("\n");
+    if(i%5 == 0)printf("\n");
     printf("%12d", f[i]);
   }
-  print("\n");
+  printf("\n");
 }
 ```
 
@@ -150,7 +151,7 @@ void main()
 </tr>
 </table>
 
-<p>用起泡法对10个数排序（由小到大）</p>
+<p>例 7.3 用起泡法对10个数排序（由小到大）</p>
 <p>起泡法的思路是：将相邻两个数比较，将小的调到前头。</p>
 
 ```c
@@ -344,9 +345,9 @@ b = / 1 4 \
 #include <stdio.h>
 
 void main()
-(
+{
   int a[2][3] = {{1,2,3},{4,5,6}};
-  in b[3][2],i,j;
+  int b[3][2],i,j;
   printf("array a:\n");
   for(i=0;i<=1;i++)
   {
@@ -366,7 +367,7 @@ void main()
     }
     printf("\n");
   }
-)
+}
 ```
 
 <p>运行结果如下：</p>
@@ -388,7 +389,7 @@ array b:
 
 void main()
 {
-  int i,j,now=0,colum=0,max;
+  int i,j,row=0,colum=0,max;
   int a[3][4]={{1,2,3,4},{9,8,7,6},{-10,10,-5,2}};
   max=a[0][0];
   for(i=0;i<=2;i++)
@@ -569,12 +570,12 @@ I am a boy
 
 void main()
 {
-  char diamond[5][5] = {
-    {'','','*'},
-    {'','*','','*'},
-    {'*','','','','*'},
-    {'','*','','*'},
-    {'','','*'}
+  char diamond[][5] = {
+    {' ', ' ', '*'},
+    {' ', '*', ' ', '*'},
+    {'*', ' ', ' ', ' ', '*'},
+    {' ', '*', ' ', '*'},
+    {' ', ' ', '*'}
   };
   int i,j;
   for(i=0;i<5;i++)
@@ -1284,7 +1285,7 @@ void main()
       word = 0;
     } else if (word==0){
       word = 1;
-      num++
+      num++;
     }
   }
   printf("There are %d words in the line.\n", num);

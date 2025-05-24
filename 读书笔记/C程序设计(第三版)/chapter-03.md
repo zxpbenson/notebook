@@ -57,6 +57,21 @@
 * 这种用一个标识符代表一个常量的符号(宏定义)，成为符号常量，即以标识符形式出现的常量
 * 符号常量名用大写，变量名用小写
 
+<p>例 3.1 符号常量的使用</p>
+
+```c
+#define PRICE 30
+#include <stdio.h>
+
+void main()
+{
+  int num, total;
+  num = 10;
+  total = num * PRICE;
+  printf("total=%d\n", total);
+}
+```
+
 ## 3.2.2 变量
 
 <p>变量代表内存中具有特定属性的一个存储单元，用来存放数据，也就是变量的值</p>
@@ -271,6 +286,7 @@ i = 10; /* 给i赋值 */
 
 ```c
 # include <stdio.h>
+
 void main() {
 	int a,b,c,d;
 	unsigned u;
@@ -291,6 +307,7 @@ void main() {
 
 ```c
 # include <stdio.h>
+
 void main() {
 	int a,b;
 	a = 32767;
@@ -652,6 +669,7 @@ c2 = 'b';
 
 ```c
 # include <stdio.h>
+
 void main()
 {
   char c1, c2;
@@ -675,6 +693,7 @@ c2 = 'b';
 
 ```c
 # include <stdio.h>
+
 void main()
 {
   char c1, c2;
@@ -900,6 +919,7 @@ c = 5;
 ```
 
 <p>需要说明的是，在强制类型转换时，得到一个所需类型的中间变量，原来变量的类型未发生变化。</p>
+
 <p>例 3.8 强制类型转换</p>
 
 ```c

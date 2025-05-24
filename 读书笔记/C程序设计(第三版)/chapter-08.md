@@ -442,7 +442,7 @@ f(int a, int b) /* 定义整型函数，省写了类型标识符 int */
 
 void main()
 {
-    int largee(int x, int y);
+    int large(int x, int y);
     int a[10], b[10], i, r, n = 0, m = 0, k = 0;
     printf("enter array a : \n");
     for(i = 0; i < 10; i++)
@@ -490,6 +490,8 @@ large(int x, int y)
 ### 8.7.2 数组名为函数参数
 
 <p>可以用数组名作函数参数，此时形参应当用数组名或指针变量。</p>
+<p>例 8-11 有一个一维数组score，内放10个学生成绩，求平均值。</p>
+
 
 ```c
 #include <stdio.h>
@@ -587,7 +589,7 @@ int array[3][];
 
 void main()
 {
-    int maxz_value(int array[][4]);
+    int max_value(int array[][4]);
     int a[3][4] = {{1,3,5,7},{2,4,6,8},{15,17,34,12}};
     printf("max value is %d\n", max_value(a));
 }
@@ -765,7 +767,7 @@ int b, c = 3;
 <p>例 8.17</p>
 
 ```c
-include <stdio.h>
+#include <stdio.h>
 
 void main()
 {
@@ -774,7 +776,6 @@ void main()
     for(i = 0; i < 3; i++)
         printf("%d", f(a));
 }
-
 
 int f(int a)
 {
@@ -821,9 +822,10 @@ int fac(int n)
 <p>一般情况下，变量(包括静态存储方式和动态存储方式)的值是存放在内存中的。当程序中用到哪一个变量的值时，由控制器发出指令将内存中该变量的值送到运算器中。经过运算器进行运算，如果需要存数，再从运算器将数据送到内存存放。</p>
 <p>如果有一些变量使用频繁，则为存取变量的值要花费不少时间。为提高执行效率，C语言允许将局部变量的值放在CPU中的寄存器中，需要用时直接从寄存器取出参加运算，不必再到内存中去存取。由于对寄存器的存取速度远高于对内存的存取速度，因此这样做可以提高执行效率。这种变量叫做寄存器变量，用关键字register作声明。</p>
 
+<p>例 8.19 使用寄存器变量。</p>
+
 ```c
 #include <stdio.h>
-
 
 void main()
 {
@@ -831,7 +833,7 @@ void main()
     long i, n;
     scanf("%ld", &n);
     for(i = 1; i <= n; i++)
-        printf("%ld != %ld\n", i fac(i));
+        printf("%ld != %ld\n", i, fac(i));
 }
 
 long fac(long n)
@@ -908,7 +910,7 @@ void main()
     int power(int);
     int b = 3, c, d, m;
     printf("enter the number a and its power m : \n");
-    scanf("%d, %d", &A, &m);
+    scanf("%d,%d", &A, &m);
     c = A * b;
     printf("%d * %d = %d\n", A, b, c);
     d = power(m);
