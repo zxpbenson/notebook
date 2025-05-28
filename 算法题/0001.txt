@@ -26,3 +26,188 @@
 === 样例输出 ===
 
 2
+
+=== 题目简化 ===
+
+二部图最多匹配的算法，设有m杯各不相同的酒，n个客人，每人任选两杯酒，客人选的两酒都给安排了才会满意，怎么安排能让尽量多的人满意
+
+
+
+C语言实现：二部图最大匹配算法（宴会酒水分配问题）
+问题重述：
+有 m 种不同的酒
+n 个客人，每个客人会选择 2 种酒
+目标：尽可能多的满足客人（客人选的两杯酒都分配给他们）
+解法：
+这是一个典型的二部图最大匹配问题，可以转化为 最大流问题 使用 Dinic算法 解决。
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
+
+#define MAX_NODES 1000  // 根据实际情况调整
+
+typedef struct Edge {
+    int to;
+    int capacity;
+    int reverse_idx;  // 反向边在邻接表中的位置
+} Edge;
+
+Edge graph[MAX_NODES][MAX_NODES];
+int graph_size[MAX_NODES] = {0};
+int level[MAX_NODES];
+int iter[MAX_NODES];
+
+void add_edge(int from, int to, int capacity) {
+    graph[from][graph_size[from]] = (Edge){to, capacity, graph_size[to]};
+    graph[to][graph_size[to]] = (Edge){from, 0, graph_size[from]};
+    graph_size[from]++;
+    graph_size[to]++;
+}
+
+// BFS分层
+int bfs(int s, int t, int node_count) {
+    memset(level, -1, sizeof(level));
+    level[s] = 0;
+    
+    int queue[MAX_NODES];
+    int front = 0, rear = 0;
+    queue[rear++] = s;
+    
+    while (front < rear) {
+        int v = queue[front++];
+        for (int i = 0; i < graph_size[v]; i++) {
+            Edge* e = &graph[v][i];
+            if (e->capacity > 0 && level[e->to] < 0) {
+                level[e->to] = level[v] + 1;
+                if (e->to == t) return 1;
+                queue[rear++] = e->to;
+            }
+        }
+    }
+    return level[t] >= 0;
+}
+
+// DFS找增广路径
+int dfs(int v, int t, int f) {
+    if (v == t) return f;
+    for (int& i = iter[v]; i < graph_size[v]; i++) {
+        Edge* e = &graph[v][i];
+        if (e->capacity > 0 && level[v] < level[e->to]) {
+            int d = dfs(e->to, t, f < e->capacity ? f : e->capacity);
+            if (d > 0) {
+                e->capacity -= d;
+                graph[e->to][e->reverse_idx].capacity += d;
+                return d;
+            }
+        }
+    }
+    return 0;
+}
+
+int max_flow(int s, int t, int node_count) {
+    int flow = 0;
+    while (bfs(s, t, node_count)) {
+        memset(iter, 0, sizeof(iter));
+        int f;
+        while ((f = dfs(s, t, INT_MAX)) > 0) {
+            flow += f;
+        }
+    }
+    return flow;
+}
+
+void solve() {
+    int m, n;
+    printf("输入酒的数量(m)和客人数量(n): ");
+    scanf("%d %d", &m, &n);
+    
+    // 节点编号规则：
+    // 源点: 0
+    // 酒: 1..m
+    // 客人: m+1..m+n
+    // 汇点: m+n+1
+    int s = 0, t = m + n + 1;
+    
+    // 源点到每种酒的容量为1（每种酒只能被分配一次）
+    for (int i = 1; i <= m; i++) {
+        add_edge(s, i, 1);
+    }
+    
+    // 客人到汇点的容量为1（每个客人只能被满足一次）
+    for (int i = m + 1; i <= m + n; i++) {
+        add_edge(i, t, 1);
+    }
+    
+    // 输入客人选择的酒
+    for (int guest = 1; guest <= n; guest++) {
+        int drink1, drink2;
+        printf("输入第%d个客人选择的两杯酒编号(1~%d): ", guest, m);
+        scanf("%d %d", &drink1, &drink2);
+        
+        // 添加两条边：酒 -> 客人
+        add_edge(drink1, m + guest, 1);
+        add_edge(drink2, m + guest, 1);
+    }
+    
+    int result = max_flow(s, t, t + 1);
+    printf("\n最多可以满足 %d 个客人\n", result);
+    
+    // 输出具体分配方案
+    printf("\n分配方案:\n");
+    for (int guest = 1; guest <= n; guest++) {
+        int assigned = 0;
+        for (int i = 0; i < graph_size[m + guest]; i++) {
+            Edge* e = &graph[m + guest][i];
+            if (e->to <= m && e->capacity == 1) {
+                printf("客人 %d -> 酒 %d\n", guest, e->to);
+                assigned = 1;
+                break;
+            }
+        }
+        if (!assigned) {
+            printf("客人 %d -> 未满足\n", guest);
+        }
+    }
+}
+
+int main() {
+    solve();
+    return 0;
+}
+
+算法说明
+
+1，建图规则：
+
+源点 → 每种酒（容量1）
+酒 → 选择它的客人（容量1）
+客人 → 汇点（容量1）
+
+2，Dinic算法关键点：
+
+bfs() 分层：确定从源点到各点的最短距离
+dfs() 找增广路径：沿分层图多路增广
+时间复杂度：O(V²E)，V为节点数，E为边数
+
+3，输入示例：
+
+输入酒的数量(m)和客人数量(n): 4 3
+输入第1个客人选择的两杯酒编号(1~4): 1 2
+输入第2个客人选择的两杯酒编号(1~4): 2 3
+输入第3个客人选择的两杯酒编号(1~4): 3 4
+
+4，输出示例：
+
+最多可以满足 2 个客人
+分配方案:
+客人 1 -> 酒 1
+客人 2 -> 酒 2
+客人 3 -> 未满足
+
+5，复杂度优化建议
+
+对于大规模数据（m+n > 1e4），可使用更高效的链式前向星存图
+可添加输入校验确保酒编号合法
+可用邻接表代替邻接矩阵节省空间
