@@ -22,4 +22,5 @@ all: $(PROGS)  # 所有章节示例
 
 clean:
 	rm -f $(PROGS)  # 正确删除所有目标文件
+	rm -f *.o
 
