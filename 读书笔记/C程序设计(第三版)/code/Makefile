@@ -4,7 +4,7 @@ PROGS08 = 08_01 08_02 08_03 08_04 08_05 08_10 08_11 08_12 08_14 08_15 08_16 08_1
 PROGS09 = 09_01 09_02 09_03 09_04 09_05 09_06 09_07
 PROGS = $(PROGS03) $(PROGS07) $(PROGS08) $(PROGS09)  # 合并各个章节
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -Wall -Wno-implicit-int
 
 all: $(PROGS)  # 所有章节示例
 

@@ -34,7 +34,7 @@ void main()
         printf("array a is equal to array b\n");
 }
 
-large(int x, int y)
+int large(int x, int y)
 {
     int flag;
     if(x > y)
