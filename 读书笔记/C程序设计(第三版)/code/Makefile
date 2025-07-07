@@ -22,27 +22,27 @@ CFLAGS = -Wall -Wno-implicit-int
 # 默认目标
 all: $(ALL_BINS)
 
-# 03章示例
+# 03章
 $(BIN_DIR)/ch03/%: ch03/%.c | $(BIN_DIR)/ch03
 	$(CC) $(CFLAGS) $< -o $@
 
-# 07章示例
+# 07章
 $(BIN_DIR)/ch07/%: ch07/%.c | $(BIN_DIR)/ch07
 	$(CC) $(CFLAGS) $< -o $@
 
-# 08章普通示例
+# 08章
 $(BIN_DIR)/ch08/%: ch08/%.c | $(BIN_DIR)/ch08
 	$(CC) $(CFLAGS) $< -o $@
 
-# 09章示例
+# 09章
 $(BIN_DIR)/ch09/%: ch09/%.c | $(BIN_DIR)/ch09
 	$(CC) $(CFLAGS) $< -o $@
 
-# 特殊多文件示例（08_21）
+# 特殊多文件（08_21）
 $(BIN_DIR)/ch08/08_21: $(OBJ_DIR)/ch08/08_21_1.o $(OBJ_DIR)/ch08/08_21_2.o | $(BIN_DIR)/ch08
 	$(CC) $(CFLAGS) $^ -o $@
 
-# 特殊多文件示例（08_22）
+# 特殊多文件（08_22）
 $(BIN_DIR)/ch08/08_22: \
 	$(OBJ_DIR)/ch08/08_22_1.o \
 	$(OBJ_DIR)/ch08/08_22_2.o \
