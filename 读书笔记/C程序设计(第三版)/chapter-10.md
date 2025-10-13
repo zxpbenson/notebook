@@ -273,7 +273,7 @@ void main()
         scanf("%d", &a[i]);
     printf("\n");
     for(i = 0; i < 10; i++)
-        printf("%d\n", *（a+i));
+        printf("%d\n", *(a+i));
 }
 ```
 
@@ -410,7 +410,7 @@ void main()
 
 void inv(int x[], int n)
 {
-    int tmp, i, j, m = (n - 1)/2
+    int tmp, i, j, m = (n - 1)/2;
     for(i = 0; i <= m; i++)
     {
         j = n - 1 - i;
@@ -444,7 +444,7 @@ void main()
 
 void inv(int *x, int n)
 {
-    int *p, tmp, *i, *j, m = (n - 1)/2
+    int *p, tmp, *i, *j, m = (n - 1)/2;
     i = x; j = x + n - 1; p = x + m;
     for(; i <= p; i++, j--)
     {
@@ -727,7 +727,7 @@ void average(float *p, int n)
     float sum=0, aver;
     p_end = p+n-1;
     for(;p<=p_end;p++)
-        sum=sum+(*p)
+        sum=sum+(*p);
     aver = sum/n;
     printf("average=%5.2f\n", aver);
 }
@@ -735,7 +735,7 @@ void average(float *p, int n)
 void search(float (*p)[4], int n)
 {
     int i;
-    printf("the score of No. %d are :\n" n);
+    printf("the score of No. %d are :\n", n);
     for(i = 0; i < 4; i++)
         printf("%5.2f ", *(*(p+n)+i));
 }
@@ -771,9 +771,9 @@ void search(float (*p)[4], int n)
         for(i=0; i<4; i++)
         {
             if(*(*(p+j)+i)<60)flag=1;
-            if(floag==1)
+            if(flag==1)
             {
-                printf("No. %d fails, his score are :\n" j+i);
+                printf("No. %d fails, his score are :\n", j+i);
                 for(i=0; i<4; i++)
                     printf("%5.1f ", *(*(p+j)+i));
                 printf("\n");
@@ -809,6 +809,7 @@ void main()
 
 <p>(2) 用字符指针指向一个字符串。</p>
 <p>可以不定义字符数组，而定义一个字符指针。用字符指针指向字符串中的字符。</p>
+<p>例 10.16</p>
 
 ```c
 #include <stdio.h>
@@ -926,7 +927,7 @@ void copy_string(char from[], char to[])
 {
     int i = 0;
     while(from[i] != '\0')
-        {to[i]=from[i];i++}
+        {to[i]=from[i];i++;}
     to[i] = '\0';
 }
 ```
@@ -953,7 +954,7 @@ void copy_string(char from[], char to[])
 {
     int i = 0;
     while(from[i] != '\0')
-        {to[i]=from[i];i++}
+        {to[i]=from[i];i++;}
     to[i] = '\0';
 }
 ```
@@ -1391,11 +1392,11 @@ void main()
     printf("enter a and b:");
     scanf("%d,%d", &a, &b);
     printf("max=");
-    proceess(a, b, max);
+    process(a, b, max);
     printf("min=");
-    proceess(a, b, min);
+    process(a, b, min);
     printf("sub=");
-    proceess(a, b, sum);    
+    process(a, b, sum);    
 }
 
 int max(int x, int y)
@@ -1772,7 +1773,6 @@ void main(int argc, char *argv[])
 
 <p>许多操作系统提供了echo命令，它的作用是实现“参数回送”，即将echo后面的各参数(各字符串)在同一行上输出。实现“参数回送”的C程序(echo.c)如下：</p>
 
-
 ```c
 # include <stdio.h>
 
@@ -1797,7 +1797,7 @@ void main(int argc, char *argv[])
     Computer and C Language
 ```
 
-_main函数中的形参不一定命名巍峨argc和argv，可以是任意的名字，只是人们习惯用argc和argv而已。_
+_main函数中的形参不一定命名为argc和argv，可以是任意的名字，只是人们习惯用argc和argv而已。_
 
 <p>利用指针数组作main函数的形参，可以向程序传送命令行参数(这些参数是字符串)，这些字符串的长度事先并不知道，而且各参数字符串的长度一般并不相同，命令行参数的数目也是可以任意的。用指针数组能够较好的满足上述要求。</p>
 
