@@ -261,7 +261,7 @@ void main()
   while(ch != '#')
   {
     fputc(ch, fp);
-    puchar(ch);
+    putchar(ch);
     ch=getchar();
   }
   putchar(10); // 向屏幕输出一个换行符
@@ -281,9 +281,9 @@ void main()
 {
   FILE *in, *out;
   char ch, infile[10], outfile[10];
-  printf(Enter the infile name :\n);
+  printf("Enter the infile name :\n");
   scanf("%s", infile);
-  printf(Enter the outfile name :\n);
+  printf("Enter the outfile name :\n");
   scanf("%s", outfile);
   if((in=fopen(infile, "r")) == NULL)
   {
@@ -726,7 +726,7 @@ void main()
     printf("can not open file\n");
     exit(0);
   }
-  for(i=0; i<10; i+=2;)
+  for(i=0; i<10; i+=2)
   {
     fseek(fp, i*sizeof(struct student_type), 0);
     fread(&stud[i], sizeof(struct student_type), 1, fp);
