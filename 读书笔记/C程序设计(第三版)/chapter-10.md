@@ -468,27 +468,27 @@ void inv(int *x, int n)
 void main()
 {
     void inv(int *x, int n);
-    int i, a[10] = {3,7,9,11,0,6,7,5,4,2};
-    int *p = a;
+    int i, arr[10], *p;
+    p = arr;
     printf("The original array:\n");
     for(i = 0; i < 10; i++,p++)
-        printf("%d,", *p);
+        scanf("%d,", p);
     printf("\n");
-    inv(a, 10);
+    p = arr;
+    inv(p, 10); // 实参为指针变量
     printf("The array has been inverted:\n");
-    for(p = a; p < arr+10; p++)
+    for(p = arr; p < arr+10; p++)
         printf("%d,", *p);
     printf("\n");
 }
 
 void inv(int *x, int n)
 {
-    int *p, tmp, *i, *j, m = (n - 1)/2
-    i = x; j = x + n - 1; p = x + m;
-    for(; i <= p; i++, j--)
-    {
-        tmp = *i; *i = *j; *j = tmp;
-    }
+    int *p, m, temp, *i, *j;
+    m =(n-1)/2;
+    i=x;j=x+n-1;p=x+m;
+    for(;i<=p;i++,j--)
+        {temp=*i;*i=*j;*j=temp;}
     return;
 }
 ```
@@ -529,8 +529,8 @@ void main()
         scanf("%d", p++);    
     p = a;
     sort(p, 10);    
-    for(p = a, i = 0; i < 10; i++,p++)
-        printf("%d", *p);
+    for(p = a, i = 0; i < 10; i++)
+        {printf("%d", *p);p++;}
 }
 
 void sort(int x[], int n)
@@ -732,7 +732,7 @@ void average(float *p, int n)
     printf("average=%5.2f\n", aver);
 }
 
-void search(float (*p)[4], int n)
+void search(float (*p)[4], int n)//p是指向具有四个元素的一维数组的指针
 {
     int i;
     printf("the score of No. %d are :\n", n);
@@ -1387,7 +1387,7 @@ void main()
     int max(int, int);//function decleration
     int min(int, int);//function decleration
     int add(int, int);//function decleration
-    int process(int, int, int (*fun)(int, int));//function decleration
+    void process(int, int, int (*fun)(int, int));//function decleration
     int a, b;
     printf("enter a and b:");
     scanf("%d,%d", &a, &b);
@@ -1396,7 +1396,7 @@ void main()
     printf("min=");
     process(a, b, min);
     printf("sub=");
-    process(a, b, sum);    
+    process(a, b, add);    
 }
 
 int max(int x, int y)
@@ -1415,7 +1415,7 @@ int min(int x, int y)
     return (z);
 }
 
-int sum(int x, int y)
+int add(int x, int y)
 {
     int z;
     z=x+y;
@@ -1461,7 +1461,7 @@ void main()
     printf("enter the number of student:");
     scanf("%d", &m);
     printf("The scores of No. %d are:\n", m);
-    p = search(score, n);
+    p = search(score, m);
     for(i = 0; i < 4; i++)
         printf("%5.2f\t", *(p+i));
     printf("\n");
@@ -1597,7 +1597,7 @@ void sort(char *name[], int n)
     }
 }
 
-void print(char *name[], int)
+void print(char *name[], int n)
 {
     int i;
     for(i = 0; i < n; i++)
@@ -1691,7 +1691,7 @@ void main()
     p = num;
     for(i = 0; i < 5; i++)
     {
-        printf("%d ", **P);
+        printf("%d ", **p);
         p++;
     }
     printf("\n");

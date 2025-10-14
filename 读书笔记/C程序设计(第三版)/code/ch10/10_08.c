@@ -3,26 +3,26 @@
 void main()
 {
     void inv(int *x, int n);
-    int i, a[10] = {3,7,9,11,0,6,7,5,4,2};
-    int *p = a;
+    int i, arr[10], *p;
+    p = arr;
     printf("The original array:\n");
     for(i = 0; i < 10; i++,p++)
-        printf("%d,", *p);
+        scanf("%d,", p);
     printf("\n");
-    inv(a, 10);
+    p = arr;
+    inv(p, 10); // 实参为指针变量
     printf("The array has been inverted:\n");
-    for(p = a; p < arr+10; p++)
+    for(p = arr; p < arr+10; p++)
         printf("%d,", *p);
     printf("\n");
 }
 
 void inv(int *x, int n)
 {
-    int *p, tmp, *i, *j, m = (n - 1)/2;
-    i = x; j = x + n - 1; p = x + m;
-    for(; i <= p; i++, j--)
-    {
-        tmp = *i; *i = *j; *j = tmp;
-    }
+    int *p, m, temp, *i, *j;
+    m =(n-1)/2;
+    i=x;j=x+n-1;p=x+m;
+    for(;i<=p;i++,j--)
+        {temp=*i;*i=*j;*j=temp;}
     return;
 }

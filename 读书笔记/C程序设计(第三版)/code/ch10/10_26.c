@@ -33,7 +33,7 @@ void sort(char *name[], int n)
     }
 }
 
-void print(char *name[], int)
+void print(char *name[], int n)
 {
     int i;
     for(i = 0; i < n; i++)

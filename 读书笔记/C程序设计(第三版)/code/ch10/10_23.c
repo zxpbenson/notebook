@@ -5,7 +5,7 @@ void main()
     int max(int, int);//function decleration
     int min(int, int);//function decleration
     int add(int, int);//function decleration
-    int process(int, int, int (*fun)(int, int));//function decleration
+    void process(int, int, int (*fun)(int, int));//function decleration
     int a, b;
     printf("enter a and b:");
     scanf("%d,%d", &a, &b);
@@ -14,7 +14,7 @@ void main()
     printf("min=");
     process(a, b, min);
     printf("sub=");
-    process(a, b, sum);    
+    process(a, b, add);    
 }
 
 int max(int x, int y)
@@ -33,7 +33,7 @@ int min(int x, int y)
     return (z);
 }
 
-int sum(int x, int y)
+int add(int x, int y)
 {
     int z;
     z=x+y;

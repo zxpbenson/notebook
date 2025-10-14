@@ -8,7 +8,7 @@ void main()
     p = num;
     for(i = 0; i < 5; i++)
     {
-        printf("%d ", **P);
+        printf("%d ", **p);
         p++;
     }
     printf("\n");

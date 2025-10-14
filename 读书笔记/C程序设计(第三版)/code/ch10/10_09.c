@@ -9,8 +9,8 @@ void main()
         scanf("%d", p++);    
     p = a;
     sort(p, 10);    
-    for(p = a, i = 0; i < 10; i++,p++)
-        printf("%d", *p);
+    for(p = a, i = 0; i < 10; i++)
+        {printf("%d", *p);p++;}
 }
 
 void sort(int x[], int n)

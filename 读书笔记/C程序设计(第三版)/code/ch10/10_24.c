@@ -9,7 +9,7 @@ void main()
     printf("enter the number of student:");
     scanf("%d", &m);
     printf("The scores of No. %d are:\n", m);
-    p = search(score, n);
+    p = search(score, m);
     for(i = 0; i < 4; i++)
         printf("%5.2f\t", *(p+i));
     printf("\n");

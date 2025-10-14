@@ -20,7 +20,7 @@ void average(float *p, int n)
     printf("average=%5.2f\n", aver);
 }
 
-void search(float (*p)[4], int n)
+void search(float (*p)[4], int n)//p是指向具有四个元素的一维数组的指针
 {
     int i;
     printf("the score of No. %d are :\n", n);
