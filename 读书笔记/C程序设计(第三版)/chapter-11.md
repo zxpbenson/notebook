@@ -452,19 +452,18 @@ struct student
     char name[20];
     char sex;
     int age;
-    char addr[30];
 };
 
 struct student stu[] = {
-    {10101, "Li Lin", 'M', "103 Beijing Road"},
-    {10102, "Zhang Fun", 'M', "130 Shanghai Road"},
-    {10103, "Wang Min", 'F', "1010 Zhongshan Road"}
+    {10101, "Li Lin", 'M', 18},
+    {10102, "Zhang Fun", 'M', 19},
+    {10104, "Wang Min", 'F', 20}
 };
 
 void main()
 {
     struct student *p;
-    printf("no. Name sex age\n");
+    printf("No. Name sex age\n");
     for(p = stu; p < stu+3; p++)
         printf("%5d %-20s %2c %4d\n", p->num, p->name, p->sex, p->age);
 }
@@ -687,7 +686,23 @@ void free(void *p)
 
 ```c
 #include <stdio.h>
-#include <malloc.h>
+//#include <malloc.h>
+
+#ifdef _WIN32
+    #include <windows.h>  // Windows 特定的头文件
+    #define OS_NAME "Windows"
+#elif __APPLE__
+    #include <TargetConditionals.h>
+    #if TARGET_OS_MAC
+        #include <stdlib.h>  // macOS 的标准库头文件
+        #define OS_NAME "macOS"
+    #endif
+#elif __linux__
+    #include <stdlib.h>  // Linux 的标准库头文件
+    #define OS_NAME "Linux"
+#else
+    #error "Unsupported OS"
+#endif
 #define NULL 0
 #define LEN sizeof(struct student)
 
@@ -772,7 +787,7 @@ struct student * del(struct student * head, long num)
     } else {
         printf("%ld not been found!\n", num);
     }
-    end;
+    end:
     return(head);
 }
 ```
@@ -1003,7 +1018,7 @@ struct
     union
     {
         int banji;
-        char positioon[10];
+        char position[10];
     } category;
 } person[2];
 

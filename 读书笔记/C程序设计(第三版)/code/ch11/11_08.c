@@ -1,7 +1,25 @@
 // 此文件包含 例 8,9,10,11 以及 11.7.8 对链表的综合操作
 
 #include <stdio.h>
-#include <malloc.h>
+
+//#include <malloc.h>
+
+#ifdef _WIN32
+    #include <windows.h>  // Windows 特定的头文件
+    #define OS_NAME "Windows"
+#elif __APPLE__
+    #include <TargetConditionals.h>
+    #if TARGET_OS_MAC
+        #include <stdlib.h>  // macOS 的标准库头文件
+        #define OS_NAME "macOS"
+    #endif
+#elif __linux__
+    #include <stdlib.h>  // Linux 的标准库头文件
+    #define OS_NAME "Linux"
+#else
+    #error "Unsupported OS"
+#endif
+
 #define NULL 0
 #define LEN sizeof(struct student)
 
@@ -69,7 +87,7 @@ struct student * del(struct student * head, long num)
     } else {
         printf("%ld not been found!\n", num);
     }
-    end;
+    end:
     return(head);
 }
 
@@ -113,20 +131,20 @@ void main()
     scanf("%ld", &del_num);
     while(del_num != 0)
     {
-        head = del(head, deel_num);
+        head = del(head, del_num);
         print(head);
         printf("input the deleted number :");
         scanf("%ld", &del_num);
     }
     printf("\ninput the inserted record :");
     stu = (struct student *)malloc(LEN);
-    scanf("%ld,%f", &stu.num, &stu.score);
+    scanf("%ld,%f", &stu->num, &stu->score);
     while(stu->num != 0)
     {
         head = insert(head, stu);
         print(head);
         printf("input the inserted record :");
         stu = (struct student *)malloc(LEN);
-        scanf("%ld,%f", &stu.num, &stu.score);
+        scanf("%ld,%f", &stu->num, &stu->score);
     }
 }

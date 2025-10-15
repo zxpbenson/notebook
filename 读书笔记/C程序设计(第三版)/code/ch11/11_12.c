@@ -9,7 +9,7 @@ struct
     union
     {
         int banji;
-        char positioon[10];
+        char position[10];
     } category;
 } person[2];
 
