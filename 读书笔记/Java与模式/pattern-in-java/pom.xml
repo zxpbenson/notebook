@@ -9,20 +9,21 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>25</java.version>
+        <project.build.jdkVersion>25</project.build.jdkVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.build.jdkVersion>21</project.build.jdkVersion>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <log4j2.version>2.17.2</log4j2.version>
-        <junit.version>4.12</junit.version>
+        <log4j2.version>2.25.2</log4j2.version>
+        <junit.version>4.13.2</junit.version>
 
-        <maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <compiler-plugin.version>3.1.0</compiler-plugin.version>
+        <maven-dependency-plugin.version>3.9.0</maven-dependency-plugin.version>
+        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
 
     </properties>
 
@@ -115,7 +116,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>${compiler-plugin.version}</version>
+                <version>${maven-resources-plugin.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
