@@ -1,0 +1,158 @@
+使用FRP做内网穿透
+
+———————————— 使用说明 ————————————
+
+用途是在公网访问内网服务
+比如我在家庭局域网部署的NAS
+我在云厂商买的云服务器，带公网IP
+在公网服务器部署 FRP Server
+在家庭NAS上部署 FRP Client
+完成配置并启动后即可从公网访问家庭NAS
+
+注意：
+公网服务器一般只开通 22、80、443等几个常用端口，FRP代理的几个端口需要自行在安全组中添加，否则无法访问
+
+———————————— 下载安装 ————————————
+
+git地址
+https://github.com/fatedier/frp
+releases中下载并解压
+放到 /usr/share 目录下并创建软链
+cd /usr/share
+ln -s frp_0.62.1_linux_amd64 frp
+
+———————————— 开机启动 Server端 ————————————
+
+cd /usr/share/frp
+vim ./frps.serivce
+加入如下内容
+
+[Unit]
+Description=FRP Server (frps)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/share/frp/frps -c /usr/share/frp/frps.toml
+User=root
+Restart=on-failure
+WorkingDirectory=/usr/share/frp
+
+[Install]
+WantedBy=multi-user.target
+
+然后
+cp frps.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable frps.service
+
+———————————— 配置 Server端 ————————————
+
+cd /usr/share/frp
+mkdir logs
+vim frps.toml
+加入如下内容：
+
+bindPort = 7000
+
+# Web Dashboard配置
+webServer.addr = "0.0.0.0"
+webServer.port = 7500
+webServer.user = "username"
+webServer.password = "password"
+
+#启用prometheus监控指标
+enablePrometheus = true
+#token权限验证，需与客户端配置一致
+auth.method = "token"
+auth.token = "password"
+
+#日志配置
+log.to = "/usr/share/frp/logs/frps.log"
+log.level = "info"
+log.maxDays = 3
+
+修改完配置启动服务
+systemctl start frps.serivce
+
+———————————— 开机启动 Client端 ————————————
+
+cd /usr/share/frp
+vim ./frpc.serivce
+加入如下内容
+
+[Unit]
+Description=FRP Client (frpc)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/share/frp/frpc -c /usr/share/frp/frpc.toml
+User=root
+Restart=on-failure
+WorkingDirectory=/usr/share/frp
+
+[Install]
+WantedBy=multi-user.target
+
+然后
+cp frpc.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable frpc.service
+
+———————————— 配置 Client端 ————————————
+
+cd /usr/share/frp
+mkdir conf.d
+mkdir logs
+vim frpc.toml
+加入如下内容：
+
+# 注意这里指向 Server 端的公网IP
+serverAddr = "vhost-ip"  
+serverPort = 7000
+
+#web dashboard配置
+webServer.addr = "0.0.0.0"
+webServer.port = 7400
+webServer.user = "username"
+webServer.password = "password"
+
+#日志配置
+log.to = "/usr/share/frp/logs/frpc.log"
+log.level = "info"
+log.maxDays = 3
+
+#token权限验证，需与服务端配置一致
+auth.method = "token"
+auth.token = "password"
+
+#代理配置，这里使用引用文件的方式
+includes = ["./conf.d/*.toml"]
+
+vim conf.d/store.toml
+加入如下内容 
+[[proxies]]
+name = "store"			#名称
+type = "tcp"				#代理类型
+localIP = "127.0.0.1"		#本地IP
+localPort = 5000			#内网服务监听的端口
+remotePort = 5000			#需要在公网服务器上监听的端口
+
+vim conf.d/console.toml
+加入如下内容 
+[[proxies]]
+name = "console"			#名称
+type = "tcp"				#代理类型
+localIP = "127.0.0.1"		#本地IP
+localPort = 7400			#内网服务监听的端口
+remotePort = 7400			#需要在公网服务器上监听的端口
+
+修改完配置启动服务
+systemctl start frpc
+
+———————————— 详细配置参考文档————————————
+
+其余详细的 frp 的 C/S  端配置，见frp文档 https://gofrp.org/zh-cn/docs/overview/
+
+
